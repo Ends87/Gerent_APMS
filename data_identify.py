@@ -7,13 +7,10 @@ import pytesseract
 from PIL import Image
 import json
 
-def photo_process(bot, telegram_token, message, nlp):
-    # Obter a ID do arquivo da foto
-    photo_message = message.photo[-1].file_id
+def dowload_image(bot, telegram_token, message):
 
-    # obter o ID da mensagem do Telegram e o ID do chat correspondente
-    chat_id = message.chat.id
-    message_id = message.message_id
+    # obter o ID do arquivo da foto
+    photo_message = message.photo[-1].file_id
 
     try:
         # Obter informações sobre o arquivo de imagem
@@ -42,7 +39,33 @@ def photo_process(bot, telegram_token, message, nlp):
 
         # Salvar a imagem com 300dpi e 100% da qualidade
         img.save(path, dpi=(300, 300), quality=100)
+        return img
+    except Exception as e:
+        bot.reply_to(message, "Erro ao baixar a imagem")
+        logging.error(f"Erro ao processar a imagem: {e}", exc_info=True)
 
+def busca_valor(texto):
+    # Expressão regular para buscar por valores monetários
+    regex_valor = re.compile(r"[Rr][Ss]?\s*\$?\s*\d{1,3}(?:[\.,]\d{3})*(?:,\d{2})?")
+
+    # Busca por valores monetários no texto
+    valor_enviado_str = regex_valor.findall(texto)
+
+    # Converte a string do valor_enviado para float
+    try:
+        valor_enviado = float(
+            valor_enviado_str[0].replace("R$ ", "").replace("RS ", "").replace(".", "").replace(",", "."))
+    except ValueError:
+        valor_enviado = None  # ou outra ação para tratar o erro
+    return valor_enviado
+
+def photo_process(bot, telegram_token, message, nlp):
+    # obter o ID da mensagem do Telegram, do chat correspondente e do arquivo da foto
+    chat_id = message.chat.id
+    message_id = message.message_id
+
+    try:
+        img = dowload_image(bot, telegram_token, message)
         # Extrair o texto da imagem com o pytesseract
         logging.info("Extraindo texto da imagem com o pytesseract...")
         texto = pytesseract.image_to_string(img)
@@ -81,7 +104,6 @@ def photo_process(bot, telegram_token, message, nlp):
         data_transacao = None
         participante_a = None
         participante_b = None
-        valor_enviado = None
         autorizacao_transacao = None
         id_transacao = None
 
@@ -120,21 +142,10 @@ def photo_process(bot, telegram_token, message, nlp):
         else:
             participante_a=("O CNPJ 04.930.244/0136-17 não foi encontrado no comprovante.")
 
-        # Expressão regular para buscar por valores monetários
-        regex_valor = re.compile(r"R\$\s*\d+(?:\.\d{3})*(?:,\d{2})?")
-
-        # Busca por valores monetários no texto
-        valor_enviado_str = regex_valor.findall(texto)
-
-        print(valor_enviado_str)
-
-        # Converte a string do valor_enviado para float
-        valor_enviado = float(valor_enviado_str[0].replace("R$ ", "").replace(".", "").replace(",", "."))
-
-
+        valor_enviado = busca_valor(texto)
 
         # Expressão regular para buscar pelo ID da transação
-        regex_id = re.compile(r"E\d{15}s[0-9a-f]{16}")
+        regex_id = re.compile(r"^[E£]\d{12}(?:\d{6}[se]\w{8}|\d{6}[se]\d{2}\w{7})$")
 
         # Busca pelo ID da transação no texto
         id_transacao = regex_id.search(texto)
