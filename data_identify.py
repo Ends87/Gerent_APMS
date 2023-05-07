@@ -6,6 +6,7 @@ from dateutil import parser
 import pytesseract
 from PIL import Image
 import json
+from unidecode import unidecode
 
 def dowload_image(bot, telegram_token, message):
 
@@ -44,6 +45,19 @@ def dowload_image(bot, telegram_token, message):
         bot.reply_to(message, "Erro ao baixar a imagem")
         logging.error(f"Erro ao processar a imagem: {e}", exc_info=True)
 
+def diferenciar_comprovante(texto, message, bot):
+    texto = unidecode(texto.lower())
+    if "pix" in texto and ("transacao" in texto or "transferencia" in texto):
+        bot.reply_to(message, "Comprovante de Transferência Pix")
+    elif "parcelado" in texto and "credito" in texto:
+        bot.reply_to(message, "Comprovante de Cartão")
+    else:
+        bot.reply_to(message, "Não foi possível diferenciar o comprovante")
+
+def extrair_aut(texto):
+    regex_aut_ = re.compile(r'(?:AUT=|aut:)(\d+)')
+    aut_nums = re.findall(regex_aut_, texto)
+    return aut_nums
 def busca_valor(texto):
     # Expressão regular para buscar por valores monetários
     regex_valor = re.compile(r"[Rr][Ss]?\s*\$?\s*\d{1,3}(?:[\.,]\d{3})*(?:,\d{2})?")
@@ -72,42 +86,66 @@ def busca_cpnj(texto):
         cnpj_encontrado = ("O CNPJ 04.930.244/0136-17 não foi encontrado no comprovante.")
     return cnpj_encontrado
 
+def busca_ID(texto):
+    # Expressão regular para buscar pelo ID da transação
+    regex_id = re.compile(r"^[E£]\d{12}(?:\d{6}[se]\w{8}|\d{6}[se]\d{2}\w{7})$")
+
+    # Busca pelo ID da transação no texto
+    id_transacao = regex_id.search(texto)
+
+    # Verifica se o ID da transação foi encontrado
+    if id_transacao:
+        id_transacao = id_transacao.group()
+    else:
+        id_transacao = ("ID da transação não encontrado.")
+    return id_transacao
+
+def salva_dados(bot, texto, message_id, chat_id):
+    # carregar o dicionário de dados do arquivo JSON
+    if os.path.exists('dados.json'):
+        with open('dados.json', 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    else:
+        data = {}
+
+    # verificar se o texto já está presente nos dados
+    if texto not in data.values():
+        # adicionar o novo texto ao dicionário
+        data[message_id] = texto
+
+        # escrever o dicionário atualizado no arquivo JSON
+        with open('dados.json', 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+
+        # enviar uma mensagem de confirmação ao usuário
+        bot.send_message(chat_id=chat_id, text=f'Texto registrado com sucesso.')
+    else:
+        bot.send_message(chat_id=chat_id, text=f'Já registrado anteriormente.')
+
+    # salva o dicionário em um arquivo json
+    with open('dicionario.json', 'w') as f:
+        json.dump(data, f)
+
 def photo_process(bot, telegram_token, message, nlp):
+
+    # Configura o caminho para o executável do Tesseract OCR
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
     # obter o ID da mensagem do Telegram, do chat correspondente e do arquivo da foto
     chat_id = message.chat.id
     message_id = message.message_id
 
     try:
         img = dowload_image(bot, telegram_token, message)
+
         # Extrair o texto da imagem com o pytesseract
         logging.info("Extraindo texto da imagem com o pytesseract...")
         texto = pytesseract.image_to_string(img)
         logging.debug(f"Texto extraído da imagem: {texto}")
 
-        # carregar o dicionário de dados do arquivo JSON
-        if os.path.exists('dados.json'):
-            with open('dados.json', 'r', encoding='utf-8') as f:
-                data = json.load(f)
-        else:
-            data = {}
+        salva_dados(bot, texto, message_id, chat_id)
 
-        # verificar se o texto já está presente nos dados
-        if texto not in data.values():
-            # adicionar o novo texto ao dicionário
-            data[message_id] = texto
-
-            # escrever o dicionário atualizado no arquivo JSON
-            with open('dados.json', 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=4)
-
-            # enviar uma mensagem de confirmação ao usuário
-            bot.send_message(chat_id=chat_id, text=f'Texto registrado com sucesso.')
-        else:
-            bot.send_message(chat_id=chat_id, text=f'Já registrado anteriormente.')
-
-        # salva o dicionário em um arquivo json
-        with open('dicionario.json', 'w') as f:
-            json.dump(data, f)
+        diferenciar_comprovante(texto, message, bot)
 
         # Processar o texto com o Spacy
         logging.info("Processando texto com o Spacy...")
@@ -143,19 +181,10 @@ def photo_process(bot, telegram_token, message, nlp):
                  pass
 
         cnpj_encontrado = busca_cpnj(texto)
+
         valor_enviado = busca_valor(texto)
 
-        # Expressão regular para buscar pelo ID da transação
-        regex_id = re.compile(r"^[E£]\d{12}(?:\d{6}[se]\w{8}|\d{6}[se]\d{2}\w{7})$")
-
-        # Busca pelo ID da transação no texto
-        id_transacao = regex_id.search(texto)
-
-        # Verifica se o ID da transação foi encontrado
-        if id_transacao:
-            id_transacao = id_transacao.group()
-        else:
-            id_transacao = ("ID da transação não encontrado.")
+        id_transacao = busca_ID(texto)
 
         # Monta a mensagem a ser enviada
         mensagem = f'Data da transação: {data_transacao}\n'

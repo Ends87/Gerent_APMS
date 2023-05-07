@@ -1,7 +1,6 @@
 import telebot
 import apms_requests
 import data_identify
-import pytesseract
 import spacy
 import logging
 import json
@@ -10,13 +9,10 @@ import json
 logging.basicConfig(filename='bot.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(levelname)s:%(message)s')
 
 # Baixa e carrega o modelo de linguagem português do spaCy
-logging.info("Baixando e carregando o modelo de linguagem português do spaCy...")
+logging.info("Baixando e carregando o modelo de linguagem do spaCy...")
 #spacy.cli.download("pt_core_news_sm")
 nlp = spacy.load("pt_core_news_sm")
-logging.info("Modelo de linguagem português carregado com sucesso!")
-
-# Configura o caminho para o executável do Tesseract OCR
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+logging.info("Modelo de linguagem carregado com sucesso!")
 
 # Lê o arquivo config.json e carrega o conteúdo em um dicionário
 with open('config.json') as f:
