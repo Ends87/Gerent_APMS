@@ -1,13 +1,19 @@
+import os
 import logging
 import re
 import requests
 from dateutil import parser
 import pytesseract
 from PIL import Image
+import json
 
 def photo_process(bot, telegram_token, message, nlp):
     # Obter a ID do arquivo da foto
     photo_message = message.photo[-1].file_id
+
+    # obter o ID da mensagem do Telegram e o ID do chat correspondente
+    chat_id = message.chat.id
+    message_id = message.message_id
 
     try:
         # Obter informações sobre o arquivo de imagem
@@ -41,6 +47,31 @@ def photo_process(bot, telegram_token, message, nlp):
         logging.info("Extraindo texto da imagem com o pytesseract...")
         texto = pytesseract.image_to_string(img)
         logging.debug(f"Texto extraído da imagem: {texto}")
+
+        # carregar o dicionário de dados do arquivo JSON
+        if os.path.exists('dados.json'):
+            with open('dados.json', 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        else:
+            data = {}
+
+        # verificar se o texto já está presente nos dados
+        if texto not in data.values():
+            # adicionar o novo texto ao dicionário
+            data[message_id] = texto
+
+            # escrever o dicionário atualizado no arquivo JSON
+            with open('dados.json', 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=4)
+
+            # enviar uma mensagem de confirmação ao usuário
+            bot.send_message(chat_id=chat_id, text=f'Texto registrado com sucesso.')
+        else:
+            bot.send_message(chat_id=chat_id, text=f'Já registrado anteriormente.')
+
+        # salva o dicionário em um arquivo json
+        with open('dicionario.json', 'w') as f:
+            json.dump(data, f)
 
         # Processar o texto com o Spacy
         logging.info("Processando texto com o Spacy...")
