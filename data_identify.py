@@ -59,6 +59,19 @@ def busca_valor(texto):
         valor_enviado = None  # ou outra ação para tratar o erro
     return valor_enviado
 
+def busca_cpnj(texto):
+    # Expressão regular para buscar o CNPJ
+    regex_cnpj = re.compile(r"0?4[.,/]?930[.,/]?244[|/]?0136[.,/-]?17")
+
+    # Busca pelo CNPJ no texto
+    cnpj_encontrado = regex_cnpj.search(texto)
+
+    if cnpj_encontrado:
+        cnpj_encontrado = ("SELS participou da transferencia")
+    else:
+        cnpj_encontrado = ("O CNPJ 04.930.244/0136-17 não foi encontrado no comprovante.")
+    return cnpj_encontrado
+
 def photo_process(bot, telegram_token, message, nlp):
     # obter o ID da mensagem do Telegram, do chat correspondente e do arquivo da foto
     chat_id = message.chat.id
@@ -102,8 +115,6 @@ def photo_process(bot, telegram_token, message, nlp):
 
         # Inicializar as variáveis
         data_transacao = None
-        participante_a = None
-        participante_b = None
         autorizacao_transacao = None
         id_transacao = None
 
@@ -131,17 +142,7 @@ def photo_process(bot, telegram_token, message, nlp):
             except:
                  pass
 
-        # Expressão regular para buscar o CNPJ
-        regex_cnpj = re.compile(r"0?4[.-/]930[.-/]244[/-]0136[/-]17")
-
-        # Busca pelo CNPJ no texto
-        cnpj_encontrado = regex_cnpj.search(texto)
-
-        if cnpj_encontrado:
-            participante_a=("SELS participou da transferencia")
-        else:
-            participante_a=("O CNPJ 04.930.244/0136-17 não foi encontrado no comprovante.")
-
+        cnpj_encontrado = busca_cpnj(texto)
         valor_enviado = busca_valor(texto)
 
         # Expressão regular para buscar pelo ID da transação
@@ -158,8 +159,7 @@ def photo_process(bot, telegram_token, message, nlp):
 
         # Monta a mensagem a ser enviada
         mensagem = f'Data da transação: {data_transacao}\n'
-        mensagem += f'CNPJ do SELS: {participante_a}\n'
-        mensagem += f'Participante B: {participante_b}\n'
+        mensagem += f'CNPJ do SELS: {cnpj_encontrado}\n'
         mensagem += f'Valor enviado: {valor_enviado}\n'
         mensagem += f'Autorização da transação: {autorizacao_transacao}\n'
         mensagem += f'ID da transação: {id_transacao}'
