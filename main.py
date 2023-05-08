@@ -1,6 +1,7 @@
 import telebot
 import apms_requests
 import data_identify
+import functions
 import spacy
 import logging
 import json
@@ -33,6 +34,6 @@ def start_connection(message):
 
 @bot.message_handler(content_types=['photo'])
 def photo_process(message):
-    data_identify.photo_process(bot, telegram_token, message, nlp)
+    functions.photo_process(bot, telegram_token, message, nlp)
 
 bot.polling()
