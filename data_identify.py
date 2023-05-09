@@ -4,7 +4,17 @@ import re
 from dateutil import parser
 import json
 from unidecode import unidecode
+import PyPDF2
 
+def ler_pdf(path):
+    texto = ""
+    with open(path, 'rb') as f:
+        leitor_pdf = PyPDF2.PdfReader(f)
+        num_paginas = len(leitor_pdf.pages)
+        for pagina in range(num_paginas):
+            conteudo_pagina = leitor_pdf.pages[pagina]
+            texto += conteudo_pagina.extract_text()
+    return texto
 def diferenciar_comprovante(texto, message, bot):
     texto = unidecode(texto.lower())
     if "pix" in texto or "99Pay" in texto:
@@ -24,14 +34,16 @@ def diferenciar_comprovante(texto, message, bot):
         bot.reply_to(message, "Não foi possível diferenciar o comprovante")
         return "Não foi possível diferenciar o comprovante"
 def buscar_aut(texto):
-    regex_aut = re.compile(r"AUT=\d+|aut:\d+|Autoriza[gçc][aã]o:?\s*(\d+)")
+    regex_aut = re.compile(r"AUT\s*=\s*(\d{6})\b|aut\s*:\s*(\d{6})\b|Autoriza[gçc][aã]o\s*:\s*(\d{6})\b", re.IGNORECASE)
+    aut = re.findall(regex_aut, texto)
+    print(aut)
+    aut = [num for tup in aut for num in tup if num.isdigit()]
 
-    # Busca por números de autorização no texto
-    aut = regex_aut.findall(texto)
-
-    # Filtra apenas os números (sem texto que o precede)
-    aut = [num for num in aut if num.isdigit()]
-    return aut[0]
+    # Verifica se há pelo menos um número de autorização
+    if aut:
+        return aut[0]
+    else:
+        return None
 
 def busca_valor(texto):
     # Expressão regular para buscar por valores monetários

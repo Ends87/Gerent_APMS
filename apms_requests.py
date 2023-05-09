@@ -23,3 +23,17 @@ def login(bot, message):
             bot.reply_to(message, 'Login bem-sucedido!')
         else:
             bot.reply_to(message, 'Falha ao fazer login')
+
+def data_filter():
+    url = 'https://apms.sdasystems.org/CampaignReport'
+    payload = {'filter': 'termo-de-busca'}
+    response = requests.post(url, data=payload)
+
+    if response.status_code == 200:
+        # Extrair os dados da resposta do servidor
+        data = response.text
+        # Fazer o parse do HTML para extrair os dados necessários
+        # ...
+    else:
+        # Tratar o erro
+        print('Erro ao fazer a solicitação HTTP')
