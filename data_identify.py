@@ -36,7 +36,6 @@ def diferenciar_comprovante(texto, message, bot):
 def buscar_aut(texto):
     regex_aut = re.compile(r"AUT\s*=\s*(\d{6})\b|aut\s*:\s*(\d{6})\b|Autoriza[gçc][aã]o\s*:\s*(\d{6})\b", re.IGNORECASE)
     aut = re.findall(regex_aut, texto)
-    print(aut)
     aut = [num for tup in aut for num in tup if num.isdigit()]
 
     # Verifica se há pelo menos um número de autorização
@@ -44,6 +43,14 @@ def buscar_aut(texto):
         return aut[0]
     else:
         return None
+
+def identificar_parcelas(texto):
+    regex_parcelas = re.compile(r"(\d+) Parcelas", re.IGNORECASE)
+    parcelas = regex_parcelas.findall(texto)
+    if parcelas:
+        return int(parcelas[0])
+    else:
+        return 1
 
 def busca_valor(texto):
     # Expressão regular para buscar por valores monetários

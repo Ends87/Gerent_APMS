@@ -102,6 +102,7 @@ def photo_process(bot, telegram_token, message, nlp):
 
         if comprovante == "Cartão de Débito" or comprovante == "Cartão de Crédito":
             mensagem += f'Autorização da transação: {data_identify.buscar_aut(texto)}\n'
+            mensagem += f'Quantidade de parcelas: {data_identify.identificar_parcelas(texto)}'
 
         if comprovante == "Transferência Pix":
             mensagem += f'ID da transação: {data_identify.busca_ID(texto)}'
