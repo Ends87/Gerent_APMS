@@ -31,7 +31,7 @@ def send_welcome(message):
 @bot.message_handler(content_types=['text', 'sticker', 'audio'])
 def start_connection(message):
     apms_requests.login(bot, message)
-
+    apms_requests.razao_request()
 @bot.message_handler(content_types=['document'])
 def document_process(message):
     file_info = bot.get_file(message.document.file_id)

@@ -24,16 +24,31 @@ def login(bot, message):
         else:
             bot.reply_to(message, 'Falha ao fazer login')
 
-def data_filter():
-    url = 'https://apms.sdasystems.org/CampaignReport'
-    payload = {'filter': 'termo-de-busca'}
-    response = requests.post(url, data=payload)
 
-    if response.status_code == 200:
-        # Extrair os dados da resposta do servidor
-        data = response.text
-        # Fazer o parse do HTML para extrair os dados necessários
-        # ...
-    else:
-        # Tratar o erro
-        print('Erro ao fazer a solicitação HTTP')
+def razao_request():
+    import requests
+
+    url = 'https://apms.sdasystems.org//Reporting/Report/ColporteurClosureReport'
+    params = {
+        'isExcel': 'false',
+        'isCsv': 'false',
+        'isAnalytical': 'true',
+        'teamCampaignColporteurId': '2dd7e8c0-b1c0-4cbe-a9c5-e3e524f62b51',
+        'teamCampaignId': '0990e8bf-6cf5-462d-a1ee-52bf2d2b1c79',
+        'minimizedDataReport': 'false',
+        'campaignType': '10',
+        'access_token': '3d7fa480bd65706fb6f2a1677773bbc9',
+        'DenominationalEntityId': 'c10dd043-e46d-e511-bbf3-002590396224'
+    }
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
+        'Referer': 'https://apms.sdasystems.org/CampaignReport',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Cookie': 'APMS=; currentCultureSettings=%7B%22CultureCode%22%3A%22pt-BR%22%2C%22FormatDate%22%3A%22dd%2FMM%2Fyyyy%22%2C%22FormatTime%22%3A%22HH%3Amm%3Ass%22%2C%22NumberGroupSeparator%22%3A%22.%22%2C%22NumberDecimalSeparator%22%3A%22%2C%22%2C%22NumberDecimalDigits%22%3A2%2C%22CurrencyGroupSeparator%22%3A%22.%22%2C%22CurrencyDecimalDigits%22%3A2%2C%22CurrencyDecimalSeparator%22%3A%22%2C%22%2C%22TimeZoneInfoId%22%3A%22SA%20Eastern%20Standard%20Time%22%7D'
+    }
+
+    response = requests.get(url, params=params, headers=headers)
+
+    with open('arquivo.pdf', 'wb') as f:
+        f.write(response.content)
