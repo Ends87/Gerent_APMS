@@ -6,6 +6,7 @@ import json
 from unidecode import unidecode
 import PyPDF2
 
+
 def ler_pdf(path):
     texto = ""
     with open(path, 'rb') as f:
@@ -15,6 +16,8 @@ def ler_pdf(path):
             conteudo_pagina = leitor_pdf.pages[pagina]
             texto += conteudo_pagina.extract_text()
     return texto
+
+
 def diferenciar_comprovante(texto, message, bot):
     texto = unidecode(texto.lower())
     if "pix" in texto or "99Pay" in texto:
@@ -33,6 +36,8 @@ def diferenciar_comprovante(texto, message, bot):
         logging.warning("Não foi possível diferenciar o comprovante")
         bot.reply_to(message, "Não foi possível diferenciar o comprovante")
         return "Não foi possível diferenciar o comprovante"
+
+
 def buscar_aut(texto):
     regex_aut = re.compile(r"AUT\s*=\s*(\d{6})\b|aut\s*:\s*(\d{6})\b|Autoriza[gçc][aã]o\s*:\s*(\d{6})\b", re.IGNORECASE)
     aut = re.findall(regex_aut, texto)
@@ -44,6 +49,7 @@ def buscar_aut(texto):
     else:
         return None
 
+
 def identificar_parcelas(texto):
     regex_parcelas = re.compile(r"(\d+) Parcelas", re.IGNORECASE)
     parcelas = regex_parcelas.findall(texto)
@@ -51,6 +57,7 @@ def identificar_parcelas(texto):
         return int(parcelas[0])
     else:
         return 1
+
 
 def busca_valor(texto):
     # Expressão regular para buscar por valores monetários
@@ -71,6 +78,7 @@ def busca_valor(texto):
         valor_enviado = None  # ou outra ação para tratar o erro
     return valor_enviado
 
+
 def busca_cpnj(texto):
     # Expressão regular para buscar o CNPJ
     regex_cnpj = re.compile(r"0?4[.,/]?930[.,/]?244[|/]?0136[.,/-]?17")
@@ -79,14 +87,15 @@ def busca_cpnj(texto):
     cnpj_encontrado = regex_cnpj.search(texto)
 
     if cnpj_encontrado:
-        cnpj_encontrado = ("SELS participou da transferência")
+        cnpj_encontrado = "SELS participou da transferência"
     else:
-        cnpj_encontrado = ("O CNPJ 04.930.244/0136-17 não foi encontrado no comprovante.")
+        cnpj_encontrado = "O CNPJ 04.930.244/0136-17 não foi encontrado no comprovante."
     return cnpj_encontrado
+
 
 def busca_ID(texto):
     # Expressão regular para buscar pelo ID da transação
-    regex_id = re.compile(r"^[E£]\d{12}(?:\d{6}[se]\w{8}|\d{6}[se]\d{2}\w{7})$")
+    regex_id = re.compile(r"^[E£]\d{12}(?:\d{6}[se]\w{8}|\d{6}[se]\d{2}\w{7})$", re.IGNORECASE)
 
     # Busca pelo ID da transação no texto
     id_transacao = regex_id.search(texto)
@@ -95,8 +104,9 @@ def busca_ID(texto):
     if id_transacao:
         id_transacao = id_transacao.group()
     else:
-        id_transacao = ("ID da transação não encontrado.")
+        id_transacao = "ID da transação não encontrado."
     return id_transacao
+
 
 def salva_dados(bot, texto, message_id, chat_id):
     # carregar o dicionário de dados do arquivo JSON
@@ -124,6 +134,7 @@ def salva_dados(bot, texto, message_id, chat_id):
     with open('dicionario.json', 'w') as f:
         json.dump(data, f)
 
+
 def buscar_datas(texto): # Identificar as datas no texto
 
     # Expressões regulares para diferentes formatos de data
@@ -147,3 +158,55 @@ def buscar_datas(texto): # Identificar as datas no texto
             return data
         except:
             return "Data não encontrada"
+
+def verificar_usuario(bot, message):
+    dados_usuarios_dir = 'dados_usuarios'
+    pedido_de_utilizacao = 'solicitacoa.json'
+
+    # Verifica se o arquivo de usuários já existe
+    if pedido_de_utilizacao in os.listdir('/'):
+        with open(os.path.join(pedido_de_utilizacao), 'r') as f:
+            usuarios = json.load(f)
+    else:
+        usuarios = []
+
+    user_id = message.from_user.id
+    user_id_str = str(user_id)
+
+    # Verifica se o usuário já está cadastrado
+    if user_id_str in [usuario['id'] for usuario in usuarios]:
+        return True
+
+    # Caso não esteja, envia mensagem solicitando que entre em contato com o administrador
+    else:
+        bot.send_message(user_id, f"Desculpe, você ainda não está cadastrado no sistema. Envie o código de verificação {user_id} ao administrador juntamente com o seu Nome Completo.")
+    # Armazena o ID do usuário no arquivo de usuários
+    novo_usuario = {'id': user_id_str}
+    usuarios.append(novo_usuario)
+    with open(os.path.join(pedido_de_utilizacao), 'w') as f:
+        json.dump(usuarios, f)
+
+    return False
+
+
+def verificar_usuario(bot, message):
+    dados_usuarios_dir = 'dados_usuarios'
+    solicitacoes_file = 'solicitacoes.json'
+
+    user_id = message.from_user.id
+    user_id_str = str(user_id)
+
+    # Verifica se existe um arquivo JSON com o ID do usuário
+    if not os.path.exists(os.path.join(dados_usuarios_dir, f'{user_id_str}.json')):
+        # Caso não exista, envia mensagem solicitando que entre em contato com o administrador
+        bot.send_message(user_id, f"Desculpe, você ainda não está cadastrado no sistema. Envie o código de verificação *{user_id}* ao administrador juntamente com o seu *Nome Completo*.")
+
+        # Armazena o ID do usuário e o nome completo informado em um arquivo de solicitações
+        with open(os.path.join(dados_usuarios_dir, solicitacoes_file), 'a') as f:
+            json.dump({'id': user_id_str, 'nome': message.from_user.full_name}, f)
+            f.write('\n')
+
+        return False
+
+    # Caso exista, o usuário já está cadastrado
+    return True

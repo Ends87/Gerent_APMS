@@ -1,11 +1,15 @@
+import logging
 import requests
 import json
+import os
+import io
 
 # Lê o arquivo config.json e carrega o conteúdo em um dicionário
 with open('config.json') as f:
     config = json.load(f)
 
-def login(bot, message):
+
+def login():
     # URL do formulário de login
     login_url = 'https://apms.sdasystems.org/Login'
 
@@ -20,26 +24,17 @@ def login(bot, message):
 
         # Verificar se o login foi bem-sucedido
         if response.status_code == 200:
-            bot.reply_to(message, 'Login bem-sucedido!')
+            logging.info('Login bem-sucedido!')
         else:
-            bot.reply_to(message, 'Falha ao fazer login')
+            logging.info('Falha ao fazer login')
 
 
-def razao_request():
-    import requests
+def razao_request(bot, message):
+
+    with open(f'dados_usuarios/{message.chat.id}.json', 'r') as f:
+        params = json.load(f)
 
     url = 'https://apms.sdasystems.org//Reporting/Report/ColporteurClosureReport'
-    params = {
-        'isExcel': 'false',
-        'isCsv': 'false',
-        'isAnalytical': 'true',
-        'teamCampaignColporteurId': '2dd7e8c0-b1c0-4cbe-a9c5-e3e524f62b51',
-        'teamCampaignId': '0990e8bf-6cf5-462d-a1ee-52bf2d2b1c79',
-        'minimizedDataReport': 'false',
-        'campaignType': '10',
-        'access_token': '3d7fa480bd65706fb6f2a1677773bbc9',
-        'DenominationalEntityId': 'c10dd043-e46d-e511-bbf3-002590396224'
-    }
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
@@ -50,5 +45,13 @@ def razao_request():
 
     response = requests.get(url, params=params, headers=headers)
 
-    with open('arquivo.pdf', 'wb') as f:
+    # Criar a pasta 'razao' se ela não existir
+    if not os.path.exists('razao'):
+        os.makedirs('razao')
+
+    # Salvar o arquivo com o ID do usuário do telegram na pasta 'razao'
+    file_name = f'razao/{message.from_user.id}.pdf'
+
+    with open(file_name, 'wb') as f:
         f.write(response.content)
+        bot.send_document(message.chat.id, open(file_name, 'rb'))
