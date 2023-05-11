@@ -110,8 +110,8 @@ def busca_ID(texto):
 
 def salva_dados(bot, texto, message_id, chat_id):
     # carregar o dicionário de dados do arquivo JSON
-    if os.path.exists('dados.json'):
-        with open('dados.json', 'r', encoding='utf-8') as f:
+    if os.path.exists('comprovantes.json'):
+        with open('comprovantes.json', 'r', encoding='utf-8') as f:
             data = json.load(f)
     else:
         data = {}
@@ -122,7 +122,7 @@ def salva_dados(bot, texto, message_id, chat_id):
         data[message_id] = texto
 
         # escrever o dicionário atualizado no arquivo JSON
-        with open('dados.json', 'w', encoding='utf-8') as f:
+        with open('comprovantes.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
 
         # enviar uma mensagem de confirmação ao usuário

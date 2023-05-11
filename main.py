@@ -16,8 +16,8 @@ logging.info("Baixando e carregando o modelo de linguagem do spaCy...")
 nlp = spacy.load("pt_core_news_sm")
 logging.info("Modelo de linguagem carregado com sucesso!")
 
-# Lê o arquivo config.json e carrega o conteúdo em um dicionário
-with open('config.json') as f:
+# Lê o arquivo e carrega o token do telegram em um dicionário
+with open('config/telegram_token.json') as f:
     config = json.load(f)
 
 # Obtém o valor do token do Telegram a partir do dicionário

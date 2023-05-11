@@ -2,10 +2,9 @@ import logging
 import requests
 import json
 import os
-import io
 
-# Lê o arquivo config.json e carrega o conteúdo em um dicionário
-with open('config.json') as f:
+# Lê o arquivo carrega os dados de acesso a APMS em um dicionário
+with open('config/apms_login.json') as f:
     config = json.load(f)
 
 
@@ -18,7 +17,7 @@ def login():
     password = config['login_password']
 
     # Criando sessão de login
-    with requests.Session() as session:
+    with requests.session() as session:
         # Enviar solicitação POST com credenciais de login
         response = session.post(login_url, data={'username': username, 'password': password})
 
@@ -55,3 +54,24 @@ def razao_request(bot, message):
     with open(file_name, 'wb') as f:
         f.write(response.content)
         bot.send_document(message.chat.id, open(file_name, 'rb'))
+
+
+def obter_token_autorizacao():
+    url = "https://apms.sdasystems.org/Callback"
+
+    headers = {
+                "Accept": "application/json, text/plain, */*",
+                "Referer": "https://apms.sdasystems.org/CampaignReport",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin"
+            }
+
+    response = requests.post(url, headers=headers)
+
+    token_autorizacao = response.headers.get("Authorization")
+
+    if token_autorizacao:
+        return token_autorizacao.split()[1]
+    else:
+        return None
