@@ -167,3 +167,9 @@ def enviar_atualizacao(bot):
     mensagem = f"Foi adicionado um novo comando: {novo_comando}! \nAgora você pode obter o relatório atualizado. Para acessá-lo, basta digitar '{novo_comando}' no chat.\n\nObs: Esta mensagem é destinada especialmente para administradores."
 
     bot.send_message(id_usuario, mensagem)
+
+def send_file(response, file_name, bot, message):
+    # Salvar o arquivo com o ID do usuário do telegram na pasta 'razao'
+    with open(file_name, 'wb') as file:
+        file.write(response.content)
+        bot.send_document(message.chat.id, open(file_name, 'rb'))

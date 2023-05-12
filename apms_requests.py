@@ -2,6 +2,7 @@ import logging
 import requests
 import json
 import os
+import functions
 
 # Lê o arquivo carrega os dados de acesso a APMS em um dicionário
 with open('config/apms_login.json') as f:
@@ -71,16 +72,9 @@ def razao_request(bot, message):
     if not os.path.exists('razao'):
         os.makedirs('razao')
 
-    # Chama a nova função para salvar o arquivo
+    # Chama a nova função para salvar e enviar o arquivo
     file_name = f'razao/{message.from_user.id}.pdf'
-    send_file(response, file_name, bot, message)
-
-
-def send_file(response, file_name, bot, message):
-    # Salvar o arquivo com o ID do usuário do telegram na pasta 'razao'
-    with open(file_name, 'wb') as file:
-        file.write(response.content)
-        bot.send_document(message.chat.id, open(file_name, 'rb'))
+    functions.send_file(response, file_name, bot, message)
 
 def get_balance_colporteurs_report(bot, message):
     url = "https://apms.sdasystems.org//Reporting/Report/BalanceColporteursReport?isExcel=false&isCsv=false&teamCampaignId=0990e8bf-6cf5-462d-a1ee-52bf2d2b1c79&campaignType=10&access_token=d63949e381da73d729a1313d7112252f&DenominationalEntityId=c10dd043-e46d-e511-bbf3-002590396224"
@@ -100,6 +94,6 @@ def get_balance_colporteurs_report(bot, message):
     if not os.path.exists('relatorios'):
         os.makedirs('relatorios')
 
-    # Chama a nova função para salvar o arquivo
+    # Chama a nova função para salvar e enviar o arquivo
     file_name = f'relatorios/{message.from_user.id}.pdf'
-    send_file(response, file_name, bot, message)
+    functions.send_file(response, file_name, bot, message)
