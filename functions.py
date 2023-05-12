@@ -156,3 +156,14 @@ def document_process(bot, telegram_token, message, nlp):
     except Exception as e:
         bot.reply_to(message, "Erro ao processar a imagem")
         logging.error(f"Erro ao processar a imagem: {e}", exc_info=True)
+
+
+def enviar_atualizacao(bot):
+    novo_comando = '/saldo'
+    id_usuario = 1034309995
+
+    bot.send_message(id_usuario, "🥳")
+
+    mensagem = f"Foi adicionado um novo comando: {novo_comando}! \nAgora você pode obter o relatório atualizado. Para acessá-lo, basta digitar '{novo_comando}' no chat.\n\nObs: Esta mensagem é destinada especialmente para administradores."
+
+    bot.send_message(id_usuario, mensagem)

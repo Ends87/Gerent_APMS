@@ -35,10 +35,17 @@ def send_welcome(message):
 @bot.message_handler(commands=['razao'])
 def start_connection(message):
     if data_identify.verificar_usuario(bot, message):
-        bot.send_message(message.chat.id, "Carregando Razão")
+        bot.send_message(message.chat.id, "⌛")
+        print(apms_requests.obter_token_autorizacao())
         apms_requests.login()
         apms_requests.razao_request(bot, message)
 
+
+@bot.message_handler(commands=['saldo'])
+def get_balence(message):
+    if message.chat.id == "1034309995" or "803998885":
+        bot.send_message(message.chat.id, "⌛")
+        apms_requests.get_balance_colporteurs_report(bot, message)
 
 @bot.message_handler(content_types=['text', 'sticker', 'audio'])
 def start_connection(message):

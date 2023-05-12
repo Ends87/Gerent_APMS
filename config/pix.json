@@ -1,0 +1,24 @@
+{
+  "teamCampaignColporteurId":"5dcc680c-904c-49b2-9793-399c3e236ccc",
+  "value":186,
+  "items":[
+    {
+      "Value":186,
+      "PaymentType":
+      {"EnumId":5, "Name":"Transfer", "Description":"Transferência"},
+      "SalesDate":"10/05/2023",
+      "TransactionCode":null,
+      "PaymentTypeDescription":"Transferência",
+      "InterestPercentage":0,
+      "InterestValue":0,
+      "Checks":[],
+      "Total":186,
+      "ColporteurName":"Andresson da Silva  Vieira",
+      "PaymentTypeEnum":5,
+      "windowId":"b1946f9b-5c34-6890-91a4-5e98b0e21dcd"
+    }
+  ],
+  "teamCampaignId":"0990e8bf-6cf5-462d-a1ee-52bf2d2b1c79",
+  "observation":"Pix",
+  "isColporteur":true
+}
