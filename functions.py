@@ -168,6 +168,7 @@ def enviar_atualizacao(bot):
 
     bot.send_message(id_usuario, mensagem)
 
+
 def send_file(response, file_name, bot, message):
     # Salvar o arquivo com o ID do usuário do telegram na pasta 'razao'
     with open(file_name, 'wb') as file:
