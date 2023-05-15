@@ -13,14 +13,10 @@ def login():
     # URL do formulário de login
     login_url = 'https://apms.sdasystems.org/Login'
 
-    # Credenciais de login
-    username = config['login_email']
-    password = config['login_password']
-
     # Criando sessão de login
     with requests.session() as session:
         # Enviar solicitação POST com credenciais de login
-        response = session.post(login_url, data={'username': username, 'password': password})
+        response = session.post(login_url, data={'username': config['login_email'], 'password': config['login_password']})
 
         # Verificar se o login foi bem-sucedido
         if response.status_code == 200:
@@ -58,18 +54,24 @@ def fazer_requisicao_autorizacao():
     return token
 
 
-def razao_request(bot, message):
-    #Busca os dados do colportor no banco de dados
-    params = functions.get_params_colporteur(bot, message)
-
-    url = 'https://apms.sdasystems.org//Reporting/Report/ColporteurClosureReport'
-
+def get_headers():
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
         'Referer': 'https://apms.sdasystems.org/CampaignReport',
         'Accept-Encoding': 'gzip, deflate, br',
         'Cookie': 'APMS=; currentCultureSettings=%7B%22CultureCode%22%3A%22pt-BR%22%2C%22FormatDate%22%3A%22dd%2FMM%2Fyyyy%22%2C%22FormatTime%22%3A%22HH%3Amm%3Ass%22%2C%22NumberGroupSeparator%22%3A%22.%22%2C%22NumberDecimalSeparator%22%3A%22%2C%22%2C%22NumberDecimalDigits%22%3A2%2C%22CurrencyGroupSeparator%22%3A%22.%22%2C%22CurrencyDecimalDigits%22%3A2%2C%22CurrencyDecimalSeparator%22%3A%22%2C%22%2C%22TimeZoneInfoId%22%3A%22SA%20Eastern%20Standard%20Time%22%7D'
     }
+
+    return headers
+
+
+def get_colporteur_closure_report(bot, message):
+    # Busca os dados do colportor no banco de dados
+    params = functions.get_params_colporteur(bot, message)
+
+    url = 'https://apms.sdasystems.org//Reporting/Report/ColporteurClosureReport'
+
+    headers = get_headers()
 
     response = requests.get(url, params=params, headers=headers)
 
@@ -89,18 +91,10 @@ def get_balance_colporteurs_report(bot, message):
     with open('config/saldo.json') as file:
         params = json.load(file)
 
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
-        "Referer": "https://apms.sdasystems.org/CampaignReport",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "pt-BR,pt;q=0.9",
-        "Sec-Fetch-Site": "same-origin",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-User": "?1",
-        "Sec-Fetch-Dest": "document",
-        "Cookie": "APMS=; currentCultureSettings=%7B%22CultureCode%22%3A%22pt-BR%22%2C%22FormatDate%22%3A%22dd%2FMM%2Fyyyy%22%2C%22FormatTime%22%3A%22HH%3Amm%3Ass%22%2C%22NumberGroupSeparator%22%3A%22.%22%2C%22NumberDecimalSeparator%22%3A%22%2C%22%2C%22NumberDecimalDigits%22%3A2%2C%22CurrencyGroupSeparator%22%3A%22.%22%2C%22CurrencyDecimalDigits%22%3A2%2C%22CurrencyDecimalSeparator%22%3A%22%2C%22%2C%22TimeZoneInfoId%22%3A%22SA%20Eastern%20Standard%20Time%22%7D"
-    }
+    headers = get_headers()
+
     response = requests.get(url, params=params, headers=headers)
+
     # Criar a pasta 'relatorios' se ela não existir
     if not os.path.exists('relatorios'):
         os.makedirs('relatorios')

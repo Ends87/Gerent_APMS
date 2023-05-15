@@ -35,7 +35,7 @@ def start_connection(message):
     if data_identify.verificar_usuario(bot, message):
         bot.send_message(message.chat.id, "🐾")
         apms_requests.login()
-        apms_requests.razao_request(bot, message)
+        apms_requests.get_colporteur_closure_report(bot, message)
 
 
 @bot.message_handler(commands=['saldo', 'SALDO'])
