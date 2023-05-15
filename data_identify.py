@@ -160,7 +160,6 @@ def buscar_datas(texto): # Identificar as datas no texto
             return "Data não encontrada"
 
 def verificar_usuario(bot, message):
-    dados_usuarios_dir = 'dados_usuarios'
     pedido_de_utilizacao = 'solicitacoa.json'
 
     # Verifica se o arquivo de usuários já existe

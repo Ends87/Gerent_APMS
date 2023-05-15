@@ -3,6 +3,8 @@ import requests
 import logging
 import pytesseract
 import data_identify
+import mysql.connector
+import json
 
 def dowload_image(bot, telegram_token, message):
 
@@ -170,7 +172,79 @@ def enviar_atualizacao(bot):
 
 
 def send_file(response, file_name, bot, message):
+    owner_id = "803998885"
+    # Verificar se o arquivo não está vazio
+    if response.status_code != 200:
+        bot.send_message(message.chat.id, "Desculpe, não foi possível acessar o arquivo solicitado. Já notificamos o administrador e em breve o serviço voltará a suas atividades. Por favor, tente novamente mais tarde.")
+        bot.send_message(owner_id, "‼️")
+        bot.send_message(owner_id, "‼️ O token de acesso expirou. ‼️")
+        return
+
     # Salvar o arquivo com o ID do usuário do telegram na pasta 'razao'
     with open(file_name, 'wb') as file:
         file.write(response.content)
         bot.send_document(message.chat.id, open(file_name, 'rb'))
+
+
+def mysql_connector(bot, message):
+    # Lê o arquivo carrega os dados de configuração do Banco de Dados em um dicionário
+    with open('config/sql_config.json') as file:
+        config = json.load(file)
+    try:
+        # Crie uma conexão com o banco de dados
+        conn = mysql.connector.connect(
+            host=config['host'],
+            user=config['user'],
+            password=config['password'],
+            database=config['database']
+        )
+        return conn
+    except mysql.connector.Error as error:
+        # Se ocorrer algum erro ao conectar ao banco de dados, envie uma mensagem de erro
+        bot.send_message(message.chat.id, f"Ocorreu um erro ao obter as informações do usuário: {error}")
+        return
+
+
+def get_params_colporteur(bot, message):
+    # Faz a consulta no banco de dados para obter as informações do usuário
+    try:
+        # Crie um cursor para executar as consultas
+        conn = mysql_connector(bot, message)
+        cursor = conn.cursor()
+        # Execute a consulta SQL para obter as informações do usuário
+        query = f'SELECT isColporteur, colporteur_id FROM Usuario WHERE telegram_id = {message.from_user.id}'
+        cursor.execute(query)
+        result = cursor.fetchone()
+
+        # Verifique se o usuário é um colportor e obtenha as informações necessárias
+        if result[0]:
+            query = f"SELECT team_campaign_id FROM Colporteur WHERE colporteur_id = '{result[1]}'"
+
+            cursor.execute(query)
+
+            team_campaign_id = cursor.fetchone()[0]
+
+            params = {
+                "isExcel": "false",
+                "isCsv": "false",
+                "isAnalytical": "true",
+                "teamCampaignColporteurId": result[1],
+                "teamCampaignId": team_campaign_id,
+                "minimizedDataReport": "false",
+                "campaignType": "10",
+                "access_token": "7c6319f9b602334195237d0f71352119",
+                "DenominationalEntityId": "c10dd043-e46d-e511-bbf3-002590396224"
+            }
+            return params
+        else:
+            # Caso contrário, envie uma mensagem informando que o usuário não é um colportor
+            bot.send_message(message.chat.id, "Você não está registrado como um colportor.")
+            return
+    except mysql.connector.Error as error:
+        # Se ocorrer algum erro ao conectar ao banco de dados, envie uma mensagem de erro
+        bot.send_message(message.chat.id, f"Ocorreu um erro ao obter as informações do usuário: {error}")
+        return
+    finally:
+        # Sempre feche o cursor e a conexão após a consulta
+        cursor.close()
+        conn.close()

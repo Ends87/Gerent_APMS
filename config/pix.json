@@ -1,22 +1,21 @@
 {
-  "teamCampaignColporteurId":"5dcc680c-904c-49b2-9793-399c3e236ccc",
-  "value":186,
+  "teamCampaignColporteurId":"334983d0-7b02-49db-aabb-3d46df575669",
+  "value":200.5,
   "items":[
     {
-      "Value":186,
-      "PaymentType":
-      {"EnumId":5, "Name":"Transfer", "Description":"Transferência"},
-      "SalesDate":"10/05/2023",
+      "Value":200.5,
+      "PaymentType":{"EnumId":5,"Name":"Transfer","Description":"Transferência"},
+      "SalesDate":"14/05/2023",
       "TransactionCode":null,
       "PaymentTypeDescription":"Transferência",
       "InterestPercentage":0,
       "InterestValue":0,
       "Checks":[],
-      "Total":186,
-      "ColporteurName":"Andresson da Silva  Vieira",
+      "Total":200.5,
+      "ColporteurName":"Osmael Oliveira  Costa",
       "PaymentTypeEnum":5,
-      "windowId":"b1946f9b-5c34-6890-91a4-5e98b0e21dcd"
-    }
+      "windowId":"2af0705f-6e79-a722-4d53-d811ebffeb21"
+  }
   ],
   "teamCampaignId":"0990e8bf-6cf5-462d-a1ee-52bf2d2b1c79",
   "observation":"Pix",

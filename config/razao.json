@@ -2,7 +2,10 @@
     "isExcel": "false",
     "isCsv": "false",
     "isAnalytical": "true",
+    "teamCampaignColporteurId": "0",
+    "teamCampaignId": "0",
     "minimizedDataReport": "false",
     "campaignType": "10",
+    "access_token": "7c6319f9b602334195237d0f71352119",
     "DenominationalEntityId": "c10dd043-e46d-e511-bbf3-002590396224"
 }
