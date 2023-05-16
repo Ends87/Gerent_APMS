@@ -11,8 +11,6 @@ import json
 logging.basicConfig(filename='bot.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(levelname)s:%(message)s')
 
 # Baixa e carrega o modelo de linguagem português do spaCy
-#logging.info("Baixando e carregando o modelo de linguagem do spaCy...")
-#spacy.cli.download("pt_core_news_sm")
 nlp = spacy.load("pt_core_news_sm")
 logging.info("Modelo de linguagem carregado com sucesso!")
 
@@ -44,11 +42,11 @@ def get_balence(message):
         bot.send_message(message.chat.id, "💫")
         apms_requests.get_balance_colporteurs_report(bot, message)
 
+
 @bot.message_handler(content_types=['text', 'sticker', 'audio'])
-def start_connection(message):
+def treat_message_invalid(message):
     bot.reply_to(message, "Para um melhor aproveitamento das funcionalidades do nosso bot do Telegram, é importante salientar que ele não aceita mensagens do tipo texto, áudio e sticker. Por isso, recomendamos que os usuários enviem o comando /razao ou para obter a razão compartilhem comprovantes no formato de imagem ou PDF para que seja realizado o lançamento. Utilize o bot de forma otimizada e tenha mais eficiência em suas tarefas!")
     data_identify.verificar_usuario(bot, message)
-    apms_requests.login()
 
 
 @bot.message_handler(content_types=['document'])
@@ -61,7 +59,7 @@ def document_process(message):
         _, file_ext = os.path.splitext(file_info.file_path)
         if file_ext.lower() == '.pdf':
             # processa o arquivo PDF
-            functions.document_process(bot, telegram_token, message, nlp)
+            functions.document_process(bot, telegram_token, message)
         else:
             bot.reply_to(message, "Apenas arquivos PDF são suportados.")
 
@@ -69,7 +67,7 @@ def document_process(message):
 @bot.message_handler(content_types=['photo'])
 def photo_process(message):
     if data_identify.verificar_usuario(bot, message):
-        functions.photo_process(bot, telegram_token, message, nlp)
+        functions.photo_process(bot, telegram_token, message)
 
 
 bot.polling()

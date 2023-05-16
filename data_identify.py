@@ -1,21 +1,21 @@
 import os
 import logging
 import re
-from dateutil import parser
+from datetime import datetime
 import json
 from unidecode import unidecode
 import PyPDF2
 
 
-def ler_pdf(path):
-    texto = ""
+def read_pdf(path):
+    text = ""
     with open(path, 'rb') as f:
-        leitor_pdf = PyPDF2.PdfReader(f)
-        num_paginas = len(leitor_pdf.pages)
-        for pagina in range(num_paginas):
-            conteudo_pagina = leitor_pdf.pages[pagina]
-            texto += conteudo_pagina.extract_text()
-    return texto
+        reader_pdf = PyPDF2.PdfReader(f)
+        num_pages = len(reader_pdf.pages)
+        for page in range(num_pages):
+            page_content = reader_pdf.pages[page]
+            text += page_content.extract_text()
+    return text
 
 
 def diferenciar_comprovante(texto, message, bot):
@@ -108,35 +108,7 @@ def busca_ID(texto):
     return id_transacao
 
 
-def salva_dados(bot, texto, message_id, chat_id):
-    # carregar o dicionário de dados do arquivo JSON
-    if os.path.exists('comprovantes.json'):
-        with open('comprovantes.json', 'r', encoding='utf-8') as f:
-            data = json.load(f)
-    else:
-        data = {}
-
-    # verificar se o texto já está presente nos dados
-    if texto not in data.values():
-        # adicionar o novo texto ao dicionário
-        data[message_id] = texto
-
-        # escrever o dicionário atualizado no arquivo JSON
-        with open('comprovantes.json', 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-
-        # enviar uma mensagem de confirmação ao usuário
-        bot.send_message(chat_id=chat_id, text=f'Texto registrado com sucesso.')
-    else:
-        bot.send_message(chat_id=chat_id, text=f'Já registrado anteriormente.')
-
-    # salva o dicionário em um arquivo json
-    with open('dicionario.json', 'w') as f:
-        json.dump(data, f)
-
-
-def buscar_datas(texto): # Identificar as datas no texto
-
+def buscar_datas(texto):
     # Expressões regulares para diferentes formatos de data
     regex_data1 = r"\d{1,2}/\d{1,2}/\d{2,4}"  # formato dd/mm/aa ou dd/mm/aaaa
     regex_data2 = r"\d{1,2}\sde\s[a-z]+\sde\s\d{2,4}"  # formato dd de mês de aaaa
@@ -154,39 +126,17 @@ def buscar_datas(texto): # Identificar as datas no texto
     # Verifica se as datas encontradas são válidas
     for data in datas_encontradas:
         try:
-            parser.parse(data)
-            return data
-        except:
-            return "Data não encontrada"
+            if len(data) == 8:
+                formato = '%d/%m/%y'  # Formato para ano com dois dígitos
+            else:
+                formato = '%d/%m/%Y'  # Formato para ano com quatro dígitos
+            dt = datetime.strptime(data, formato)
+            data_formatada = dt.strftime('%Y-%m-%d')  # Formato americano: YYYY-MM-DD
+            return data_formatada
+        except ValueError:
+            pass
 
-def verificar_usuario(bot, message):
-    pedido_de_utilizacao = 'solicitacoa.json'
-
-    # Verifica se o arquivo de usuários já existe
-    if pedido_de_utilizacao in os.listdir('/'):
-        with open(os.path.join(pedido_de_utilizacao), 'r') as f:
-            usuarios = json.load(f)
-    else:
-        usuarios = []
-
-    user_id = message.from_user.id
-    user_id_str = str(user_id)
-
-    # Verifica se o usuário já está cadastrado
-    if user_id_str in [usuario['id'] for usuario in usuarios]:
-        return True
-
-    # Caso não esteja, envia mensagem solicitando que entre em contato com o administrador
-    else:
-        bot.send_message(user_id, f"Desculpe, você ainda não está cadastrado no sistema. Envie o código de verificação {user_id} ao administrador juntamente com o seu Nome Completo.")
-    # Armazena o ID do usuário no arquivo de usuários
-    novo_usuario = {'id': user_id_str}
-    usuarios.append(novo_usuario)
-    with open(os.path.join(pedido_de_utilizacao), 'w') as f:
-        json.dump(usuarios, f)
-
-    return False
-
+    return None
 
 def verificar_usuario(bot, message):
     dados_usuarios_dir = 'dados_usuarios'
