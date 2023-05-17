@@ -105,7 +105,7 @@ def save_data_to_database(cursor, message, comprovante, texto):
 
             # Verifica se há um valor de transação presente no texto
             if valor_transacao is None:
-                return False, f"Desculpe, esse comprovante ainda não pode ser processado pelo bot.{valor_transacao}"
+                return False, f"Desculpe, esse comprovante ainda não pode ser processado pelo bot."
 
             data_transacao = d_i.buscar_datas(texto)
             cnpj_sels = d_i.busca_cpnj(texto)
@@ -118,7 +118,7 @@ def save_data_to_database(cursor, message, comprovante, texto):
             cursor.execute(query, values)
 
         else:
-            return False, "Desculpe, esse tipo de comprovante ainda não pode ser processado pelo bot."
+            return False, "Desculpe, não foi possivel identificar o tipo de comprovante."
 
         return True, "Texto registrado com sucesso."
 
@@ -149,13 +149,13 @@ def photo_process(bot, telegram_token, message):
 
         comprovante = d_i.diferenciar_comprovante(texto, message, bot)
 
-        success, message_text = save_data_to_database(cursor, message, comprovante, texto)
+        success, response = save_data_to_database(cursor, message, comprovante, texto)
 
         if success:
             conn.commit()
-            bot.send_message(message.chat.id, text=message_text)
+            bot.send_message(message.chat.id, text=response)
         else:
-            bot.send_message(message.chat.id, text=message_text)
+            bot.send_message(message.chat.id, text=response)
 
         # Fecha o cursor e a conexão
         cursor.close()
@@ -168,6 +168,9 @@ def photo_process(bot, telegram_token, message):
 
 def document_process(bot, telegram_token, message):
     try:
+        conn = mysql_connector(bot, message)
+        cursor = conn.cursor()
+
         path = download_pdf(bot, telegram_token, message)
 
         # Lê o texto no PDF
@@ -177,24 +180,18 @@ def document_process(bot, telegram_token, message):
 
         comprovante = d_i.diferenciar_comprovante(texto, message, bot)
 
-        # Monta a mensagem a ser enviada
-        mensagem = f'Data da transação: {d_i.buscar_datas(texto)}\n'
-        mensagem += f'CNPJ do SELS: {d_i.busca_cpnj(texto)}\n'
-        mensagem += f'Valor enviado: {d_i.busca_valor(texto)}\n'
-
-        if comprovante == "Cartão de Débito" or comprovante == "Cartão de Crédito":
-            mensagem += f'Autorização da transação: {d_i.buscar_aut(texto)}\n'
-
-        if comprovante == "Transferência Pix":
-            mensagem += f'ID da transação: {d_i.busca_ID(texto)}'
-
-        # Envia a mensagem pelo bot
-        bot.reply_to(message, mensagem)
-        logging.debug(f'Mensagem enviada: {mensagem}')
+        # Salva os dados no banco de dados
+        success, response = save_data_to_database(cursor, message, comprovante, texto)
+        if success:
+            conn.commit()
+            logging.info("Dados salvos no banco de dados com sucesso.")
+            bot.send_message(message.chat.id, text=response)
+        else:
+            logging.error(f"Erro ao salvar os dados: {response}")
+            bot.send_message(message.chat.id, text=response)
 
     except Exception as e:
-        bot.reply_to(message, "Erro ao processar a imagem")
-        logging.error(f"Erro ao processar a imagem: {e}", exc_info=True)
+        logging.error(f"Erro ao processar o documento: {str(e)}")
 
 
 def enviar_atualizacao(bot):
