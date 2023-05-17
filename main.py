@@ -51,17 +51,7 @@ def treat_message_invalid(message):
 
 @bot.message_handler(content_types=['document'])
 def document_process(message):
-    if data_identify.verificar_usuario(bot, message):
-        file_info = bot.get_file(message.document.file_id)
-        bot.download_file(file_info.file_path)
-
-        # verifica se o arquivo é um PDF
-        _, file_ext = os.path.splitext(file_info.file_path)
-        if file_ext.lower() == '.pdf':
-            # processa o arquivo PDF
-            functions.document_process(bot, telegram_token, message)
-        else:
-            bot.reply_to(message, "Apenas arquivos PDF são suportados.")
+    functions.document_process(bot, telegram_token, message)
 
 
 @bot.message_handler(content_types=['photo'])

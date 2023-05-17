@@ -5,11 +5,11 @@ import pytesseract
 import data_identify as d_i
 import mysql.connector
 import json
+import os
 
 
 def download_image(bot, telegram_token, message):
-
-    # obter o ID do arquivo da foto
+    # Obter o ID do arquivo da foto
     photo_message = message.photo[-1].file_id
 
     try:
@@ -28,8 +28,9 @@ def download_image(bot, telegram_token, message):
 
         # Salvar a imagem com maior resolução e qualidade
         path += f"{photo_message}.jpg"
-        with open(path, "wb") as new_file:
-            new_file.write(response.content)
+        with open(path, "wb") as new_file, response:
+            for chunk in response.iter_content(chunk_size=128):
+                new_file.write(chunk)
 
         img = Image.open(path)
 
@@ -42,7 +43,7 @@ def download_image(bot, telegram_token, message):
 
 
 def download_pdf(bot, telegram_token, message):
-    # obter o ID do arquivo do PDF
+    # Obter o ID do arquivo do PDF
     pdf_message = message.document.file_id
 
     try:
@@ -50,6 +51,12 @@ def download_pdf(bot, telegram_token, message):
         logging.info("Obtendo informações sobre o arquivo PDF...")
         file_info = bot.get_file(pdf_message)
         file_path = file_info.file_path
+
+        # Verificar se o arquivo é um PDF
+        if not file_path.endswith('.pdf'):
+            bot.reply_to(message, "O arquivo fornecido não é um PDF.")
+            logging.warning("Arquivo fornecido não é um PDF.")
+            return None
 
         # Fazer o download do PDF
         logging.info("Fazendo download do arquivo PDF...")
@@ -65,15 +72,69 @@ def download_pdf(bot, telegram_token, message):
             new_file.write(response.content)
 
         return path
-
     except Exception as e:
-        bot.reply_to(message, "Erro ao baixar o arquivo PDF")
+        bot.reply_to(message, "Erro ao baixar o arquivo PDF.")
         logging.error(f"Erro ao baixar o arquivo PDF: {e}", exc_info=True)
+        return None
+
+
+def save_data_to_database(cursor, message, comprovante, texto):
+    try:
+        if comprovante == "Cartão de Débito" or comprovante == "Cartão de Crédito":
+            valor_transacao = d_i.busca_valor(texto)
+            autorizacao = d_i.buscar_aut(texto)
+            parcelas = d_i.identificar_parcelas(texto)
+
+            # Verifica se há um valor de transação presente no texto
+            if valor_transacao is None:
+                return False, "Desculpe, esse comprovante ainda não pode ser processado pelo bot."
+
+            data_transacao = d_i.buscar_datas(texto)
+            cnpj_sels = d_i.busca_cpnj(texto)
+            id_transacao = None
+
+            query = "INSERT INTO transactions (message_id, data_transacao, cnpj_sels, valor_enviado, autorizacao, parcelas, id_transacao, texto) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+            values = (
+                message.message_id, data_transacao, cnpj_sels, valor_transacao, autorizacao, parcelas, id_transacao, texto
+            )
+            cursor.execute(query, values)
+
+        elif comprovante == "Transferência Pix":
+            valor_transacao = d_i.busca_valor(texto)
+            id_transacao = d_i.busca_ID(texto)
+
+            # Verifica se há um valor de transação presente no texto
+            if valor_transacao is None:
+                return False, f"Desculpe, esse comprovante ainda não pode ser processado pelo bot.{valor_transacao}"
+
+            data_transacao = d_i.buscar_datas(texto)
+            cnpj_sels = d_i.busca_cpnj(texto)
+            autorizacao = None
+
+            query = "INSERT INTO transactions (message_id, data_transacao, cnpj_sels, valor_enviado, autorizacao, id_transacao, texto) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            values = (
+                message.message_id, data_transacao, cnpj_sels, valor_transacao, autorizacao, id_transacao, texto
+            )
+            cursor.execute(query, values)
+
+        else:
+            return False, "Desculpe, esse tipo de comprovante ainda não pode ser processado pelo bot."
+
+        return True, "Texto registrado com sucesso."
+
+    except mysql.connector.Error as error:
+        return False, f"Erro ao salvar os dados: {error}"
 
 
 def photo_process(bot, telegram_token, message):
-    # Configura o caminho para o executável do Tesseract OCR
+    # Define o caminho para o executável do Tesseract OCR
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
+    # Define o caminho para o diretório tessdata
+    os.environ['TESSDATA_PREFIX'] = r'C:\Program Files\Tesseract-OCR\tessdata'
+
+    # Configura o caminho completo para o arquivo de treinamento de idioma
+    custom_config = r'--oem 3 --psm 6 -l por'  # Exemplo para o idioma português
 
     try:
         conn = mysql_connector(bot, message)
@@ -83,83 +144,22 @@ def photo_process(bot, telegram_token, message):
 
         # Extrair o texto da imagem com o pytesseract
         logging.info("Extraindo texto da imagem com o pytesseract...")
-        texto = pytesseract.image_to_string(img)
+        texto = pytesseract.image_to_string(img, config=custom_config)
         logging.debug(f"Texto extraído da imagem: {texto}")
 
         comprovante = d_i.diferenciar_comprovante(texto, message, bot)
 
-        if comprovante == "Cartão de Débito" or comprovante == "Cartão de Crédito":
-            valor_transacao = d_i.busca_valor(texto)
-            autorizacao = d_i.buscar_aut(texto)
-            parcelas = d_i.identificar_parcelas(texto)
+        success, message_text = save_data_to_database(cursor, message, comprovante, texto)
 
-            # Verifica se há um valor de transação presente no texto
-            if valor_transacao is None:
-                bot.reply_to(message, "Desculpe, esse comprovante ainda não pode ser processado pelo bot.")
-                logging.warning("Comprovante não pode ser processado pelo bot. Valor de transação não encontrado.")
-                return
-
-            # Salva os dados no banco de dados
-            try:
-                data_transacao = d_i.buscar_datas(texto)
-                cnpj_sels = d_i.busca_cpnj(texto)
-                id_transacao = None
-
-                query = "INSERT INTO transactions (message_id, data_transacao, cnpj_sels, valor_enviado, autorizacao, parcelas, id_transacao, texto) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-                values = (
-                    message.message_id, data_transacao, cnpj_sels, valor_transacao, autorizacao, parcelas, id_transacao, texto
-                )
-                cursor.execute(query, values)
-                conn.commit()
-
-                # Envia uma mensagem de confirmação ao usuário
-                bot.send_message(message.chat.id, text="Texto registrado com sucesso.")
-            except mysql.connector.Error as error:
-                # Em caso de erro, envia uma mensagem de erro ao usuário
-                bot.send_message(message.chat.id, text=f"Erro ao salvar os dados: {error}")
-            finally:
-                # Fecha o cursor e a conexão
-                cursor.close()
-                conn.close()
-
-        elif comprovante == "Transferência Pix":
-            valor_transacao = d_i.busca_valor(texto)
-            id_transacao = d_i.busca_ID(texto)
-
-            # Verifica se há um valor de transação presente no texto
-            if valor_transacao is None:
-                bot.reply_to(message, "Desculpe, esse comprovante ainda não pode ser processado pelo bot.")
-                logging.warning("Comprovante não pode ser processado pelo bot. Valor de transação não encontrado.")
-                return
-
-            # Salva os dados no banco de dados
-            try:
-                data_transacao = d_i.buscar_datas(texto)
-                cnpj_sels = d_i.busca_cpnj(texto)
-                autorizacao = None
-
-                query = "INSERT INTO transactions (message_id, data_transacao, cnpj_sels, valor_enviado, autorizacao, id_transacao, texto) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-                values = (
-                    message.message_id, data_transacao, cnpj_sels, valor_transacao, autorizacao, id_transacao,
-                    texto
-                )
-                cursor.execute(query, values)
-                conn.commit()
-
-                # Envia uma mensagem de confirmação ao usuário
-                bot.send_message(message.chat.id, text="Texto registrado com sucesso.")
-            except mysql.connector.Error as error:
-                # Em caso de erro, envia uma mensagem de erro ao usuário
-                bot.send_message(message.chat.id, text=f"Erro ao salvar os dados: {error}")
-            finally:
-                # Fecha o cursor e a conexão
-                cursor.close()
-                conn.close()
-
+        if success:
+            conn.commit()
+            bot.send_message(message.chat.id, text=message_text)
         else:
-            bot.reply_to(message, "Desculpe, esse tipo de comprovante ainda não pode ser processado pelo bot.")
-            logging.warning("Tipo de comprovante não suportado.")
-            return
+            bot.send_message(message.chat.id, text=message_text)
+
+        # Fecha o cursor e a conexão
+        cursor.close()
+        conn.close()
 
     except Exception as e:
         bot.reply_to(message, "Erro ao processar a imagem")
@@ -170,10 +170,10 @@ def document_process(bot, telegram_token, message):
     try:
         path = download_pdf(bot, telegram_token, message)
 
-        # Extrair o texto da imagem com o pytesseract
+        # Lê o texto no PDF
         logging.info("Extraindo texto do PDF...")
         texto = d_i.read_pdf(path)
-        logging.debug(f"Texto extraído da imagem: {texto}")
+        logging.debug(f"Texto extraído do PDF: {texto}")
 
         comprovante = d_i.diferenciar_comprovante(texto, message, bot)
 

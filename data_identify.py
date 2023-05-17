@@ -61,7 +61,7 @@ def identificar_parcelas(texto):
 
 def busca_valor(texto):
     # Expressão regular para buscar por valores monetários
-    regex_valor = re.compile(r"[Rr][Ss]?\s*\$?\s*\d{1,3}(?:[\.,]\d{3})*(?:,\d{2})?")
+    regex_valor = re.compile(r"(?:R[Ss]?[$]?)\s*(\d{1,3}(?:[\.,]\d{3})*(?:,\d{2})?)")
 
     # Busca por valores monetários no texto
     valor_enviado_str = regex_valor.findall(texto)
@@ -69,15 +69,17 @@ def busca_valor(texto):
     # Converte a string do valor_enviado para float
     try:
         if valor_enviado_str:
-            valor_enviado = float(
-                valor_enviado_str[0].replace("R$ ", "").replace("RS ", "").replace(".", "").replace(",", "."))
+            valor_str = valor_enviado_str[0].replace("R$ ", "").replace("RS ", "").replace(".", "").replace(",", ".")
+            valor_enviado = float(valor_str)
         else:
             valor_enviado = None  # ou outra ação para tratar o erro
 
-    except ValueError:
+    except ValueError as e:
         valor_enviado = None  # ou outra ação para tratar o erro
+        logging.error(f"Erro ao converter valor monetário: {e}", exc_info=True)
+        return valor_enviado
+    logging.info(f"Valor encontrado: {valor_enviado}")
     return valor_enviado
-
 
 def busca_cpnj(texto):
     # Expressão regular para buscar o CNPJ
