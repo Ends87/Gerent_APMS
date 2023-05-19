@@ -6,6 +6,7 @@ import data_identify as d_i
 import mysql.connector
 import json
 import os
+import shutil
 
 
 def download_image(bot, telegram_token, message):
@@ -23,7 +24,10 @@ def download_image(bot, telegram_token, message):
         response = requests.get(f"https://api.telegram.org/file/bot{telegram_token}/{file_path}")
         response.raise_for_status()
 
-        # Caminho da pasta "imgs"
+        # Verificar se a pasta 'imgs' existe e criá-la se necessário
+        if not os.path.exists('imgs'):
+            os.makedirs('imgs')
+
         path = "imgs/"
 
         # Salvar a imagem com maior resolução e qualidade
@@ -36,7 +40,7 @@ def download_image(bot, telegram_token, message):
 
         # Salvar a imagem com 300dpi e 100% da qualidade
         img.save(path, dpi=(300, 300), quality=100)
-        return img
+        return img, path
     except Exception as e:
         bot.reply_to(message, "Erro ao baixar a imagem")
         logging.error(f"Erro ao baixar a imagem: {e}", exc_info=True)
@@ -63,7 +67,10 @@ def download_pdf(bot, telegram_token, message):
         response = requests.get(f"https://api.telegram.org/file/bot{telegram_token}/{file_path}")
         response.raise_for_status()
 
-        # Caminho da pasta "pdfs"
+        # Verificar se a pasta 'pdfs' existe e criá-la se necessário
+        if not os.path.exists('pdfs'):
+            os.makedirs('pdfs')
+
         path = "pdfs/"
 
         # Salvar o arquivo PDF
@@ -78,8 +85,26 @@ def download_pdf(bot, telegram_token, message):
         return None
 
 
-def save_data_to_database(cursor, message, comprovante, texto):
+def save_data_to_database(cursor, telegram_id, message_id, texto, comprovante):
     try:
+        # Crie a chave única
+        chave = f"{telegram_id}_{message_id}"
+
+        # Insira os dados gerais do comprovante na tabela de comprovantes
+        query = "INSERT INTO comprovantes (chave, telegram_id, message_id, texto, comprovante) VALUES (%s, %s, %s, %s, %s)"
+        values = (chave, telegram_id, message_id, texto, comprovante)
+        cursor.execute(query, values)
+
+        # Obtém o ID do último comprovante registrado
+        query = "SELECT LAST_INSERT_ID()"
+        cursor.execute(query)
+        comprovante_id = cursor.fetchone()[0]
+
+        # Verifica se há um comprovante registrado para o usuário
+        if comprovante_id is None:
+            return False, "Desculpe, nenhum comprovante registrado para esse usuário."
+
+        # Salva as informações da transação na tabela apropriada
         if comprovante == "Cartão de Débito" or comprovante == "Cartão de Crédito":
             valor_transacao = d_i.busca_valor(texto)
             autorizacao = d_i.buscar_aut(texto)
@@ -91,11 +116,10 @@ def save_data_to_database(cursor, message, comprovante, texto):
 
             data_transacao = d_i.buscar_datas(texto)
             cnpj_sels = d_i.busca_cpnj(texto)
-            id_transacao = None
 
-            query = "INSERT INTO transactions (message_id, data_transacao, cnpj_sels, valor_enviado, autorizacao, parcelas, id_transacao, texto) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+            query = "INSERT INTO comprovantes_cartao (comprovante_id, valor_enviado, data_transacao, cnpj_sels, autorizacao, parcelas) VALUES (%s, %s, %s, %s, %s, %s)"
             values = (
-                message.message_id, data_transacao, cnpj_sels, valor_transacao, autorizacao, parcelas, id_transacao, texto
+                comprovante_id, valor_transacao, data_transacao, cnpj_sels, autorizacao, parcelas
             )
             cursor.execute(query, values)
 
@@ -105,42 +129,33 @@ def save_data_to_database(cursor, message, comprovante, texto):
 
             # Verifica se há um valor de transação presente no texto
             if valor_transacao is None:
-                return False, f"Desculpe, esse comprovante ainda não pode ser processado pelo bot."
+                return False, "Desculpe, esse comprovante ainda não pode ser processado pelo bot."
 
             data_transacao = d_i.buscar_datas(texto)
             cnpj_sels = d_i.busca_cpnj(texto)
-            autorizacao = None
 
-            query = "INSERT INTO transactions (message_id, data_transacao, cnpj_sels, valor_enviado, autorizacao, id_transacao, texto) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            query = "INSERT INTO comprovantes_pix (comprovante_id, valor_enviado, data_transacao, cnpj_sels, id_transacao) VALUES (%s, %s, %s, %s, %s)"
             values = (
-                message.message_id, data_transacao, cnpj_sels, valor_transacao, autorizacao, id_transacao, texto
+                comprovante_id, valor_transacao, data_transacao, cnpj_sels, id_transacao
             )
             cursor.execute(query, values)
 
-        else:
-            return False, "Desculpe, não foi possivel identificar o tipo de comprovante."
+        return True, "Comprovante registrado com sucesso."
 
-        return True, "Texto registrado com sucesso."
-
-    except mysql.connector.Error as error:
-        return False, f"Erro ao salvar os dados: {error}"
+    except Exception as e:
+        return False, f"Erro ao salvar o comprovante: {str(e)}"
 
 
 def photo_process(bot, telegram_token, message):
-    # Define o caminho para o executável do Tesseract OCR
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-    # Define o caminho para o diretório tessdata
     os.environ['TESSDATA_PREFIX'] = r'C:\Program Files\Tesseract-OCR\tessdata'
-
-    # Configura o caminho completo para o arquivo de treinamento de idioma
-    custom_config = r'--oem 3 --psm 6 -l por'  # Exemplo para o idioma português
+    custom_config = r'--oem 3 --psm 6 -l por'
 
     try:
         conn = mysql_connector(bot, message)
         cursor = conn.cursor()
 
-        img = download_image(bot, telegram_token, message)
+        img, path = download_image(bot, telegram_token, message)
 
         # Extrair o texto da imagem com o pytesseract
         logging.info("Extraindo texto da imagem com o pytesseract...")
@@ -149,12 +164,19 @@ def photo_process(bot, telegram_token, message):
 
         comprovante = d_i.diferenciar_comprovante(texto, message, bot)
 
-        success, response = save_data_to_database(cursor, message, comprovante, texto)
+        success, response = save_data_to_database(cursor, message.chat.id, message.message_id, texto, comprovante)
 
         if success:
             conn.commit()
             bot.send_message(message.chat.id, text=response)
         else:
+            # Verificar se a pasta 'review' existe e criá-la se necessário
+            if not os.path.exists('review'):
+                os.makedirs('review')
+
+            # Mover o arquivo para a pasta de revisão
+            review_path = f"review/{message.chat.id}_{message.message_id}.jpg"
+            shutil.move(path, review_path)
             bot.send_message(message.chat.id, text=response)
 
         # Fecha o cursor e a conexão
@@ -181,14 +203,26 @@ def document_process(bot, telegram_token, message):
         comprovante = d_i.diferenciar_comprovante(texto, message, bot)
 
         # Salva os dados no banco de dados
-        success, response = save_data_to_database(cursor, message, comprovante, texto)
+        success, response = save_data_to_database(cursor, message.chat.id, message.message_id, texto, comprovante)
         if success:
             conn.commit()
             logging.info("Dados salvos no banco de dados com sucesso.")
             bot.send_message(message.chat.id, text=response)
         else:
             logging.error(f"Erro ao salvar os dados: {response}")
+
+            # Verificar se a pasta 'review' existe e criá-la se necessário
+            if not os.path.exists('review'):
+                os.makedirs('review')
+
+            # Mover o arquivo para a pasta de revisão
+            review_path = f"review/{message.chat.id}_{message.message_id}.pdf"
+            shutil.move(path, review_path)
             bot.send_message(message.chat.id, text=response)
+
+        # Fecha o cursor e a conexão
+        cursor.close()
+        conn.close()
 
     except Exception as e:
         logging.error(f"Erro ao processar o documento: {str(e)}")

@@ -24,6 +24,7 @@ def login():
         else:
             logging.info('Falha ao fazer login')
 
+
 def fazer_requisicao_autorizacao():
     client_id = "26f3b882-c847-42ab-90c0-064ab380b594"
     redirect_uri = "https://apms.sdasystems.org/Callback"

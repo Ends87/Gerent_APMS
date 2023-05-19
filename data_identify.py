@@ -81,6 +81,7 @@ def busca_valor(texto):
     logging.info(f"Valor encontrado: {valor_enviado}")
     return valor_enviado
 
+
 def busca_cpnj(texto):
     # Expressão regular para buscar o CNPJ
     regex_cnpj = re.compile(r"0?4[.,/]?930[.,/]?244[|/]?0136[.,/-]?17")
@@ -89,15 +90,15 @@ def busca_cpnj(texto):
     cnpj_encontrado = regex_cnpj.search(texto)
 
     if cnpj_encontrado:
-        cnpj_encontrado = "SELS participou da transferência"
+        cnpj_encontrado = True
     else:
-        cnpj_encontrado = "O CNPJ 04.930.244/0136-17 não foi encontrado no comprovante."
+        cnpj_encontrado = False
     return cnpj_encontrado
 
 
 def busca_ID(texto):
     # Expressão regular para buscar pelo ID da transação
-    regex_id = re.compile(r"^[E£]\d{12}(?:\d{6}[se]\w{8}|\d{6}[se]\d{2}\w{7})$", re.IGNORECASE)
+    regex_id = re.compile(r"^[E£]\w{32}$", re.IGNORECASE)
 
     # Busca pelo ID da transação no texto
     id_transacao = regex_id.search(texto)
@@ -139,6 +140,7 @@ def buscar_datas(texto):
             pass
 
     return None
+
 
 def verificar_usuario(bot, message):
     dados_usuarios_dir = 'dados_usuarios'
