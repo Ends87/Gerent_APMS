@@ -4,7 +4,6 @@ import logging
 import pytesseract
 import data_identify as d_i
 import mysql.connector
-import json
 import os
 import shutil
 
@@ -125,7 +124,7 @@ def save_data_to_database(cursor, telegram_id, message_id, texto, comprovante):
 
         elif comprovante == "Transferência Pix":
             valor_transacao = d_i.busca_valor(texto)
-            id_transacao = d_i.busca_ID(texto)
+            id_transacao = d_i.busca_id(texto)
 
             # Verifica se há um valor de transação presente no texto
             if valor_transacao is None:
@@ -152,7 +151,7 @@ def photo_process(bot, telegram_token, message):
     custom_config = r'--oem 3 --psm 6 -l por'
 
     try:
-        conn = mysql_connector(bot, message)
+        conn = d_i.mysql_connector(bot, message)
         cursor = conn.cursor()
 
         img, path = download_image(bot, telegram_token, message)
@@ -190,7 +189,7 @@ def photo_process(bot, telegram_token, message):
 
 def document_process(bot, telegram_token, message):
     try:
-        conn = mysql_connector(bot, message)
+        conn = d_i.mysql_connector(bot, message)
         cursor = conn.cursor()
 
         path = download_pdf(bot, telegram_token, message)
@@ -254,28 +253,9 @@ def send_file(response, file_name, bot, message):
         bot.send_document(message.chat.id, open(file_name, 'rb'))
 
 
-def mysql_connector(bot, message):
-    # Lê o arquivo carrega os dados de configuração do Banco de Dados em um dicionário
-    with open('config/sql_config.json') as file:
-        config = json.load(file)
-    try:
-        # Crie uma conexão com o banco de dados
-        conn = mysql.connector.connect(
-            host=config['host'],
-            user=config['user'],
-            password=config['password'],
-            database=config['database']
-        )
-        return conn
-    except mysql.connector.Error as error:
-        # Se ocorrer algum erro ao conectar ao banco de dados, envie uma mensagem de erro
-        bot.send_message(message.chat.id, f"Ocorreu um erro ao obter as informações do usuário: {error}")
-        return
-
-
 def get_params_colporteur(bot, message):
     # Crie um cursor para executar as consultas
-    conn = mysql_connector(bot, message)
+    conn = d_i.mysql_connector(bot, message)
     cursor = conn.cursor()
     # Faz a consulta no banco de dados para obter as informações do usuário
     try:

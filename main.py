@@ -3,7 +3,6 @@ import apms_requests
 import data_identify
 import functions
 import spacy
-import os
 import logging
 import json
 

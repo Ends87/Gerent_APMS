@@ -14539,3 +14539,555 @@ da e
 2023-05-18 22:32:21,727 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
 2023-05-18 22:32:41,928 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
 2023-05-18 22:33:02,141 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:33:21,846 INFO:Modelo de linguagem carregado com sucesso!
+2023-05-18 22:33:21,861 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 22:33:23,143 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getMe HTTP/1.1" 200 198
+2023-05-18 22:33:23,159 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 22:33:36,322 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 1778
+2023-05-18 22:33:36,348 INFO:Obtendo informações sobre o arquivo PDF...
+2023-05-18 22:33:36,349 INFO:Obtendo informações sobre o arquivo PDF...
+2023-05-18 22:33:36,366 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 22:33:36,366 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 22:33:37,205 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getFile?file_id=BQACAgEAAxkBAAIL1WRm0fD4AAH-GNwOquHvFuHMMW3FSwAC_QIAAqj0OEfYhqCTjfMQ3C8E HTTP/1.1" 200 196
+2023-05-18 22:33:37,209 INFO:Fazendo download do arquivo PDF...
+2023-05-18 22:33:37,211 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getFile?file_id=BQACAgEAAxkBAAIL1mRm0fANtf4dnakXUEdt4uJzF24mAAL-AgACqPQ4R_kk5KCiOEbmLwQ HTTP/1.1" 200 195
+2023-05-18 22:33:37,216 INFO:Fazendo download do arquivo PDF...
+2023-05-18 22:33:37,239 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 22:33:37,242 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 22:33:37,913 DEBUG:https://api.telegram.org:443 "GET /file/bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/documents/file_474.pdf HTTP/1.1" 200 5719
+2023-05-18 22:33:37,916 DEBUG:https://api.telegram.org:443 "GET /file/bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/documents/file_473.pdf HTTP/1.1" 200 1729
+2023-05-18 22:33:37,927 INFO:Extraindo texto do PDF...
+2023-05-18 22:33:37,933 INFO:Extraindo texto do PDF...
+2023-05-18 22:33:37,987 DEBUG:Texto extraído do PDF: SISBB  -  SISTEMA DE INFORMACOES BANCO DO BRASIL
+08/05/2023 -     AUTOATENDIMENTO      - 10.42.11
+1527X01527                                  0047
+                Comprovante Pix
+CLIENTE: MARIA M SAMPAIO MONTEIRO
+AGENCIA: 1527-X CONTA:        44.015-9
+================================================
+SOBRE A TRANSACAO
+------------------------------------------------
+ID:             E0000000020230508134132533831719
+CPF DO PAGADOR:                   ***.148.282-**
+VALOR:                                     95,00
+DATA:                      08/05/2023 - 10:41:57
+------------------------------------------------
+PAGO PARA:  Sels Unificado Para
+CNPJ:  4.930.244/0136-17
+CHAVE PIX: 04930244013617
+INSTITUICAO: 90400888 BCO SANTANDER (BRASIL) S.A
+AGENCIA: 1679 - CONTA: 00000000000130003679
+TIPO DE CONTA: Conta Corrente
+------------------------------------------------
+Notificacao enviada em: 08/05/2023 - 10:41:58
+================================================
+DOCUMENTO: 050802
+AUTENTICACAO SISBB:        A.01D.42D.E1D.1A3.F20
+================================================
+Central de Atendimento BB
+4004 0001
+Consultas, informacoes e servicos transacionais.
+SAC BB
+0800 729 0722
+Informacoes, reclamacoes, cancelamento de produ-
+tos e servicos.
+Ouvidoria
+0800 729 5678
+Reclamacoes   nao   solucionadas    nos   canais
+habituais   agencia,  SAC  e  Demais  canais  de
+atendimento.
+Atendimento a deficientes auditivos ou fala
+0800 729 0088
+Informacoes, reclamacoes, cancelamento de cartao
+e outros produtos e servicos de Ouvidoria.
+2023-05-18 22:33:38,002 INFO:Comprovante de Transferência Pix
+2023-05-18 22:33:38,094 DEBUG:Texto extraído do PDF: Recomendamos a impressão desse Comprovante
+Para tanto, utilize a opção da impressão de seu dispositivo
+ 
+ Comprovante Pix
+ Data e Hora: 12/05/2023 - 08:44:19
+ Número de Controle: E60746948202305121143A72305UOguo
+Dados de quem pagou
+ Nome:JUVENILHO RODRIGUES DE MEIRA
+ CPF:***.660.509-**
+ Instituição: Bradesco S/A
+Dados da Transação
+ Valor:R$ 243,00
+ Data e Hora: 12/05/2023 - 08:44:48
+ Debitar da: Conta-Corrente
+Dados de quem recebeu
+ Nome:UNIAO NORTE BRASILEIRA DA IGREJA ADVENTI
+ CNPJ:04.930.244/0136-17
+ Instituição: BCO SANTANDER (BRASIL) S.A.
+ Chave: 04.930.244/0136-17
+Transação concluída pelo BRADESCO CELULAR
+AUTENTICAÇÃO
+     xsCGenWi cczWEZZe n?zlIk7I bRNQufNZ W8Q4bfUc @eFoQrVt j4Ahqcu8 3MFETDnK
+     Bmx#ZqZ9 uQavv8f4 4o4gx#5e OjeEbrtg yXz7aWj3 8O562zNL rU@2#qwt cg6M7KT8
+     2X9NOgR5 yTIvacb6 oGQ#Kbgo W3cuP?er xTEKNVqP A96LEwNn 88427231 17372430
+0
+    
+2023-05-18 22:33:38,100 INFO:Comprovante de Transferência Pix
+2023-05-18 22:33:38,459 DEBUG:https://api.telegram.org:443 "POST /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/sendMessage?chat_id=803998885&text=Comprovante+de+Transfer%C3%AAncia+Pix&reply_to_message_id=3029 HTTP/1.1" 200 1146
+2023-05-18 22:33:38,470 INFO:Valor encontrado: None
+2023-05-18 22:33:38,471 ERROR:Erro ao salvar os dados: Desculpe, esse comprovante ainda não pode ser processado pelo bot.
+2023-05-18 22:33:38,495 DEBUG:https://api.telegram.org:443 "POST /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/sendMessage?chat_id=803998885&text=Comprovante+de+Transfer%C3%AAncia+Pix&reply_to_message_id=3030 HTTP/1.1" 200 1142
+2023-05-18 22:33:38,499 INFO:Valor encontrado: 243.0
+2023-05-18 22:33:38,509 INFO:Dados salvos no banco de dados com sucesso.
+2023-05-18 22:33:38,827 DEBUG:https://api.telegram.org:443 "POST /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/sendMessage?chat_id=803998885&text=Desculpe%2C+esse+comprovante+ainda+n%C3%A3o+pode+ser+processado+pelo+bot. HTTP/1.1" 200 316
+2023-05-18 22:33:38,877 DEBUG:https://api.telegram.org:443 "POST /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/sendMessage?chat_id=803998885&text=Comprovante+registrado+com+sucesso. HTTP/1.1" 200 280
+2023-05-18 22:33:56,535 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:34:16,749 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:34:36,969 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:34:57,180 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:35:17,394 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:35:37,792 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:35:58,090 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:36:18,299 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:36:38,516 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:36:58,732 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:37:18,960 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:37:39,167 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:37:59,392 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:38:19,614 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:38:39,962 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:39:00,173 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:39:20,380 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:39:40,600 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:40:00,806 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:40:21,009 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:40:41,286 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:41:01,503 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:41:21,715 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:41:41,933 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:42:02,141 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:42:22,345 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:42:42,573 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:43:02,800 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:43:23,023 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:43:43,225 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:43:43,240 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 22:44:03,882 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:44:24,109 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:44:44,322 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:45:04,526 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:45:24,746 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:45:44,989 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:46:05,201 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:46:25,427 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:46:45,659 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:47:05,885 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:47:26,088 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:47:46,294 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:48:06,515 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:48:26,744 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:48:46,995 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:49:07,209 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:49:27,425 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:49:47,627 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:50:08,272 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:50:28,488 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:50:48,697 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:51:08,917 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:51:29,129 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:51:49,348 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:52:09,558 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:52:29,762 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:52:49,966 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:53:10,175 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:53:30,385 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:53:50,671 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:53:50,688 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 22:54:11,386 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:54:31,585 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:54:51,794 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:55:12,111 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:55:32,309 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:55:52,517 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:56:12,730 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:56:32,948 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:56:53,161 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:57:13,365 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:57:33,587 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:57:53,803 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:58:14,027 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:58:34,247 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:58:54,464 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:59:14,878 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:59:35,105 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 22:59:55,319 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:00:15,543 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:00:35,754 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:00:55,971 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:01:16,187 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:01:36,419 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:01:56,652 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:02:16,880 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:02:37,096 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:02:57,318 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:03:18,018 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:03:38,695 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:03:58,939 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:03:58,968 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 23:04:19,580 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:04:39,805 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:05:00,065 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:05:20,265 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:05:40,477 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:06:00,688 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:06:20,900 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:06:41,139 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:07:01,349 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:07:21,560 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:07:41,791 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:08:02,002 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:08:22,210 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:08:42,428 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:09:02,663 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:09:22,880 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:09:43,096 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:10:03,314 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:10:23,558 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:10:43,767 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:11:03,968 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:11:24,197 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:11:44,417 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:12:04,643 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:12:24,901 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:12:45,121 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:13:05,332 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:13:25,568 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:13:45,779 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:14:06,003 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:14:06,033 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 23:14:26,682 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:14:46,926 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:15:07,128 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:15:27,345 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:15:47,557 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:16:07,803 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:16:28,016 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:16:48,225 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:17:08,428 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:17:28,644 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:17:49,309 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:18:09,553 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:18:29,778 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:18:50,426 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:19:10,621 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:19:30,820 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:19:51,078 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:20:11,277 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:20:31,633 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:20:51,848 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:21:12,487 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:21:32,694 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:21:52,904 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:22:13,230 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:22:33,443 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:22:53,665 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:23:13,882 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:23:34,111 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:23:54,313 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:24:14,513 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:24:14,526 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 23:24:35,145 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:24:55,355 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:25:15,574 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:25:35,776 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:25:56,002 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:26:16,202 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:26:36,448 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:26:56,665 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:27:16,876 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:27:37,099 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:27:57,302 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:28:17,515 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:28:37,723 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:28:57,958 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:29:18,628 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:29:38,865 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:29:59,070 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:30:19,277 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:30:39,486 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:30:59,706 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:31:19,932 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:31:40,144 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:32:00,369 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:32:20,572 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:32:40,775 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:33:00,998 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:33:21,226 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:33:41,446 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:34:01,652 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:34:21,862 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:34:21,881 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 23:34:42,505 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:35:02,723 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:35:22,956 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:35:43,175 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:36:03,403 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:36:23,617 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:36:43,833 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:37:04,035 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:37:24,254 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:37:44,473 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:38:04,693 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:38:24,908 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:38:45,115 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:39:05,340 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:39:25,548 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:39:45,762 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:40:05,986 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:40:26,212 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:40:46,432 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:41:06,633 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:41:26,841 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:41:47,044 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:42:07,254 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:42:27,477 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:42:47,678 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:43:08,337 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:43:28,547 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:43:48,761 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:44:08,975 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:44:29,180 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:44:29,194 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 23:44:49,794 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:45:09,993 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:45:30,248 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:45:50,469 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:46:10,713 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:46:30,931 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:46:51,129 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:47:11,804 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:47:32,032 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:47:52,389 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:48:12,611 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:48:33,486 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:48:53,847 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:49:14,054 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:49:34,272 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:49:54,482 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:50:14,709 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:50:34,942 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:50:55,146 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:51:15,343 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:51:35,547 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:51:55,747 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:52:15,947 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793755&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:55:23,682 INFO:Modelo de linguagem carregado com sucesso!
+2023-05-18 23:55:23,700 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 23:55:24,390 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getMe HTTP/1.1" 200 198
+2023-05-18 23:55:24,402 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-18 23:55:45,054 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:56:05,253 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:56:26,020 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:56:46,265 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:57:06,500 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:57:26,709 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:57:46,983 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:58:07,212 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:58:27,416 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:58:47,624 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:59:07,861 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:59:28,065 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-18 23:59:48,286 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:00:08,496 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:00:28,708 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:00:49,379 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:01:09,586 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:01:29,789 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:01:49,993 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:02:10,196 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:02:30,415 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:02:50,624 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:03:10,825 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:03:31,046 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:03:51,267 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:04:11,470 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:04:32,128 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:04:52,349 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:05:12,567 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:05:32,794 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:05:32,811 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 00:05:53,421 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:06:13,627 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:06:33,841 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:06:54,046 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:07:14,256 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:07:34,471 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:07:54,668 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:08:14,872 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:08:35,089 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:08:55,325 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:09:15,553 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:09:35,777 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:09:56,006 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:10:16,221 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:10:36,426 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:10:56,646 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:11:16,849 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:11:37,064 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:11:57,735 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:12:17,956 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:12:38,157 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:12:58,363 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:13:18,568 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:13:38,779 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:13:58,991 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:14:19,205 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:14:39,415 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:14:59,630 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:15:19,831 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:15:40,038 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:15:40,049 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 00:16:00,675 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:16:20,884 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:16:41,104 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:17:01,303 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:17:21,508 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:17:41,712 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:18:01,916 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:18:22,165 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:18:42,401 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:19:02,606 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:19:22,812 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:19:43,018 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:20:03,223 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:20:23,426 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:20:43,626 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:21:03,834 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:21:24,068 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:21:44,298 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:22:04,498 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:22:24,698 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:22:44,906 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:23:05,117 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:23:25,334 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:23:47,252 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:24:07,472 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:24:27,676 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:24:47,879 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:25:08,095 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:25:28,286 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:25:48,502 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:25:48,517 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 00:26:09,647 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:26:29,848 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:26:50,062 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:27:10,260 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:27:30,460 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:27:50,660 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:28:10,861 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:28:31,073 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:28:51,270 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:29:11,467 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:29:31,661 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:29:51,867 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:30:12,080 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:30:32,289 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:30:52,494 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:31:12,687 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:31:32,899 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:31:53,101 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:32:13,303 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:32:33,506 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:32:53,739 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:33:13,939 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:33:34,134 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:33:54,332 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:34:14,536 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:34:34,737 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:34:54,945 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:35:15,161 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:35:35,377 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:35:55,570 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:35:55,580 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 00:36:16,608 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 00:36:36,813 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:13:56,335 INFO:Modelo de linguagem carregado com sucesso!
+2023-05-19 11:13:56,353 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 11:13:57,252 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getMe HTTP/1.1" 200 198
+2023-05-19 11:13:57,275 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 11:13:58,031 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 931
+2023-05-19 11:13:58,044 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 11:13:59,077 DEBUG:https://api.telegram.org:443 "POST /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/sendMessage?chat_id=803998885&text=%F0%9F%92%AB HTTP/1.1" 200 257
+2023-05-19 11:13:59,085 DEBUG:Starting new HTTPS connection (1): apms.sdasystems.org:443
+2023-05-19 11:14:13,791 DEBUG:https://apms.sdasystems.org:443 "GET //Reporting/Report/BalanceColporteursReport?isExcel=False&isCsv=False&teamCampaignId=0990e8bf-6cf5-462d-a1ee-52bf2d2b1c79&campaignType=10&access_token=c43c34231d19420c3b24f3fbd15c9876&DenominationalEntityId=c10dd043-e46d-e511-bbf3-002590396224 HTTP/1.1" 200 295775
+2023-05-19 11:14:18,314 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:14:20,562 DEBUG:https://api.telegram.org:443 "POST /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/sendDocument?chat_id=803998885 HTTP/1.1" 200 806
+2023-05-19 11:14:38,552 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:14:58,819 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:15:19,060 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:15:39,265 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:15:59,538 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:16:19,774 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:16:40,005 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:17:00,243 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:17:20,501 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:17:40,725 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:18:00,974 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:18:21,220 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:18:41,453 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:19:01,669 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:19:21,898 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:19:42,124 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:20:02,477 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:20:22,830 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:20:43,081 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:21:03,287 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:21:23,512 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:21:44,010 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:22:04,231 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:22:24,614 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:22:44,880 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:23:05,185 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:23:25,611 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:23:45,934 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:24:06,172 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:24:06,203 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 11:24:26,980 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:24:47,237 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:25:07,455 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:25:27,677 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:25:47,894 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:26:08,099 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:26:28,323 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:26:48,545 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:27:08,755 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:27:28,976 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 11:27:49,228 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793757&timeout=20 HTTP/1.1" 200 23
+2023-05-19 13:47:31,081 INFO:Modelo de linguagem carregado com sucesso!
+2023-05-19 13:47:31,091 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 13:47:31,960 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getMe HTTP/1.1" 200 198
+2023-05-19 13:47:31,969 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-19 13:47:52,849 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 13:48:13,051 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 13:48:33,296 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-19 13:48:53,569 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-21 21:24:41,444 INFO:Modelo de linguagem carregado com sucesso!
+2023-05-21 21:24:41,460 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-21 21:24:42,249 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getMe HTTP/1.1" 200 198
+2023-05-21 21:24:42,277 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-21 21:24:42,889 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 405
+2023-05-21 21:24:43,110 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-21 21:24:43,891 DEBUG:https://api.telegram.org:443 "POST /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/sendMessage?chat_id=5992679467&text=%F0%9F%90%BE HTTP/1.1" 200 281
+2023-05-21 21:24:43,907 DEBUG:Starting new HTTPS connection (1): apms.sdasystems.org:443
+2023-05-21 21:24:45,121 DEBUG:https://apms.sdasystems.org:443 "POST /Login HTTP/1.1" 200 63899
+2023-05-21 21:24:45,752 INFO:Login bem-sucedido!
+2023-05-21 21:25:03,085 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=106793759&timeout=20 HTTP/1.1" 200 23
+2023-05-21 21:25:13,279 INFO:Modelo de linguagem carregado com sucesso!
+2023-05-21 21:25:13,295 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-21 21:25:13,945 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getMe HTTP/1.1" 200 198
+2023-05-21 21:25:13,945 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-21 21:25:27,137 INFO:Modelo de linguagem carregado com sucesso!
+2023-05-21 21:25:27,152 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-21 21:25:27,771 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getMe HTTP/1.1" 200 198
+2023-05-21 21:25:27,771 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-21 21:25:48,412 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2023-05-21 21:25:55,200 INFO:Modelo de linguagem carregado com sucesso!
+2023-05-21 21:25:55,216 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-21 21:25:56,113 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getMe HTTP/1.1" 200 198
+2023-05-21 21:25:56,144 DEBUG:Starting new HTTPS connection (1): api.telegram.org:443
+2023-05-21 21:26:16,764 DEBUG:https://api.telegram.org:443 "GET /bot5815481144:AAF_O1k2x3q_4Xv_QRD-7Qps5kZbOQljlWQ/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23

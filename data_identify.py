@@ -1,20 +1,38 @@
-import os
 import logging
 import re
 from datetime import datetime
-import json
 from unidecode import unidecode
 import PyPDF2
+import mysql.connector
+import json
+
+
+def mysql_connector(bot, message):
+    # Lê o arquivo carrega os dados de configuração do Banco de Dados em um dicionário
+    with open('config/sql_config.json') as file:
+        config = json.load(file)
+    try:
+        # Crie uma conexão com o banco de dados
+        conn = mysql.connector.connect(
+            host=config['host'],
+            user=config['user'],
+            password=config['password'],
+            database=config['database']
+        )
+        return conn
+    except mysql.connector.Error as error:
+        # Se ocorrer algum erro ao conectar ao banco de dados, envie uma mensagem de erro
+        bot.send_message(message.chat.id, f"Ocorreu um erro ao obter as informações do usuário: {error}")
+        return
 
 
 def read_pdf(path):
-    text = ""
     with open(path, 'rb') as f:
         reader_pdf = PyPDF2.PdfReader(f)
         num_pages = len(reader_pdf.pages)
         for page in range(num_pages):
             page_content = reader_pdf.pages[page]
-            text += page_content.extract_text()
+            text = page_content.extract_text()
     return text
 
 
@@ -96,7 +114,7 @@ def busca_cpnj(texto):
     return cnpj_encontrado
 
 
-def busca_ID(texto):
+def busca_id(texto):
     # Expressão regular para buscar pelo ID da transação
     regex_id = re.compile(r"^[E£]\w{32}$", re.IGNORECASE)
 
@@ -143,23 +161,24 @@ def buscar_datas(texto):
 
 
 def verificar_usuario(bot, message):
-    dados_usuarios_dir = 'dados_usuarios'
-    solicitacoes_file = 'solicitacoes.json'
+    # Verifica se o usuário está cadastrado no banco de dados
+    conn = mysql_connector(bot, message)
+    cursor = conn.cursor()
 
-    user_id = message.from_user.id
-    user_id_str = str(user_id)
+    telegram_id = message.from_user.id
 
-    # Verifica se existe um arquivo JSON com o ID do usuário
-    if not os.path.exists(os.path.join(dados_usuarios_dir, f'{user_id_str}.json')):
-        # Caso não exista, envia mensagem solicitando que entre em contato com o administrador
-        bot.send_message(user_id, f"Desculpe, você ainda não está cadastrado no sistema. Envie o código de verificação *{user_id}* ao administrador juntamente com o seu *Nome Completo*.")
+    # Verifica se o usuário existe na tabela Usuario
+    cursor.execute("SELECT telegram_id FROM Usuario WHERE telegram_id = %s", (telegram_id,))
+    result = cursor.fetchone()
 
-        # Armazena o ID do usuário e o nome completo informado em um arquivo de solicitações
-        with open(os.path.join(dados_usuarios_dir, solicitacoes_file), 'a') as f:
-            json.dump({'id': user_id_str, 'nome': message.from_user.full_name}, f)
-            f.write('\n')
+    # Fecha o cursor e a conexão
+    cursor.close()
+    conn.close()
 
+    if result:
+        # Usuário encontrado no banco de dados
+        return True
+    else:
+        # Usuário não encontrado no banco de dados
+        bot.send_message(telegram_id, f"Desculpe, você ainda não está cadastrado no sistema. Envie o código de verificação *{telegram_id}* ao administrador juntamente com o seu *Nome Completo*.")
         return False
-
-    # Caso exista, o usuário já está cadastrado
-    return True
