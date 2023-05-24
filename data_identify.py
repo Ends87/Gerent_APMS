@@ -7,7 +7,7 @@ import mysql.connector
 import json
 
 
-def mysql_connector(bot, message):
+def mysql_connector():
     # Lê o arquivo carrega os dados de configuração do Banco de Dados em um dicionário
     with open('config/sql_config.json') as file:
         config = json.load(file)
@@ -21,9 +21,8 @@ def mysql_connector(bot, message):
         )
         return conn
     except mysql.connector.Error as error:
-        # Se ocorrer algum erro ao conectar ao banco de dados, envie uma mensagem de erro
-        bot.send_message(message.chat.id, f"Ocorreu um erro ao obter as informações do usuário: {error}")
-        return
+        # Se ocorrer algum erro ao conectar ao banco de dados, retorne o erro
+        return error
 
 
 def read_pdf(path):
@@ -162,7 +161,14 @@ def buscar_datas(texto):
 
 def verificar_usuario(bot, message):
     # Verifica se o usuário está cadastrado no banco de dados
-    conn = mysql_connector(bot, message)
+    conn = mysql_connector()
+
+    # Verifica se ocorreu um erro na conexão
+    if isinstance(conn, mysql.connector.Error):
+        # Trate o erro conforme necessário
+        bot.send_message(message.chat.id, f"Ocorreu um erro ao verificar o usuário: {conn}")
+        return False
+
     cursor = conn.cursor()
 
     telegram_id = message.from_user.id

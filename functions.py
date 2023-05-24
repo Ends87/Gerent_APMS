@@ -108,13 +108,18 @@ def save_data_to_database(cursor, telegram_id, message_id, texto, comprovante):
             valor_transacao = d_i.busca_valor(texto)
             autorizacao = d_i.buscar_aut(texto)
             parcelas = d_i.identificar_parcelas(texto)
-
-            # Verifica se há um valor de transação presente no texto
-            if valor_transacao is None:
-                return False, "Desculpe, esse comprovante ainda não pode ser processado pelo bot."
-
             data_transacao = d_i.buscar_datas(texto)
             cnpj_sels = d_i.busca_cpnj(texto)
+
+            # Verifica se todos os valores de transação estão presentes no texto
+            if valor_transacao is None or autorizacao is None or parcelas is None or data_transacao is None or cnpj_sels is None:
+                # Salva as informações incompletas na tabela de comprovantes incompletos de cartão
+                query = "INSERT INTO comprovantes_incompletos_cartao (comprovante_id, valor_enviado, data_transacao, cnpj_sels, autorizacao, parcelas) VALUES (%s, %s, %s, %s, %s, %s)"
+                values = (
+                    comprovante_id, valor_transacao, data_transacao, cnpj_sels, autorizacao, parcelas
+                )
+                cursor.execute(query, values)
+                return False, "Não foi possível identificar todas as informações do comprovante automaticamente. Encaminhamos seu comprovante para um atendente, que irá verificar e processar manualmente. Obrigado pela compreensão!"
 
             query = "INSERT INTO comprovantes_cartao (comprovante_id, valor_enviado, data_transacao, cnpj_sels, autorizacao, parcelas) VALUES (%s, %s, %s, %s, %s, %s)"
             values = (
@@ -125,13 +130,18 @@ def save_data_to_database(cursor, telegram_id, message_id, texto, comprovante):
         elif comprovante == "Transferência Pix":
             valor_transacao = d_i.busca_valor(texto)
             id_transacao = d_i.busca_id(texto)
-
-            # Verifica se há um valor de transação presente no texto
-            if valor_transacao is None:
-                return False, "Desculpe, esse comprovante ainda não pode ser processado pelo bot."
-
             data_transacao = d_i.buscar_datas(texto)
             cnpj_sels = d_i.busca_cpnj(texto)
+
+            # Verifica se todos os valores de transação estão presentes no texto
+            if valor_transacao is None or id_transacao is None or data_transacao is None or cnpj_sels is None:
+                # Salva as informações incompletas na tabela de comprovantes incompletos de Pix
+                query = "INSERT INTO comprovantes_incompletos_pix (comprovante_id, valor_enviado, data_transacao, cnpj_sels, id_transacao) VALUES (%s, %s, %s, %s, %s)"
+                values = (
+                    comprovante_id, valor_transacao, data_transacao, cnpj_sels, id_transacao
+                )
+                cursor.execute(query, values)
+                return False, "Não foi possível identificar todas as informações do comprovante automaticamente. Encaminhamos seu comprovante para um atendente, que irá verificar e processar manualmente. Obrigado pela compreensão!"
 
             query = "INSERT INTO comprovantes_pix (comprovante_id, valor_enviado, data_transacao, cnpj_sels, id_transacao) VALUES (%s, %s, %s, %s, %s)"
             values = (
@@ -151,7 +161,14 @@ def photo_process(bot, telegram_token, message):
     custom_config = r'--oem 3 --psm 6 -l por'
 
     try:
-        conn = d_i.mysql_connector(bot, message)
+        conn = d_i.mysql_connector()
+
+        # Verifica se ocorreu um erro na conexão
+        if isinstance(conn, mysql.connector.Error):
+            # Trate o erro conforme necessário
+            bot.send_message(message.chat.id, f"Ocorreu um erro ao processar a foto: {conn}")
+            return
+
         cursor = conn.cursor()
 
         img, path = download_image(bot, telegram_token, message)
@@ -169,6 +186,7 @@ def photo_process(bot, telegram_token, message):
             conn.commit()
             bot.send_message(message.chat.id, text=response)
         else:
+            conn.commit()
             # Verificar se a pasta 'review' existe e criá-la se necessário
             if not os.path.exists('review'):
                 os.makedirs('review')
@@ -189,7 +207,14 @@ def photo_process(bot, telegram_token, message):
 
 def document_process(bot, telegram_token, message):
     try:
-        conn = d_i.mysql_connector(bot, message)
+        conn = d_i.mysql_connector()
+
+        # Verifica se ocorreu um erro na conexão
+        if isinstance(conn, mysql.connector.Error):
+            # Trate o erro conforme necessário
+            bot.send_message(message.chat.id, f"Ocorreu um erro ao processar o documento: {conn}")
+            return
+
         cursor = conn.cursor()
 
         path = download_pdf(bot, telegram_token, message)
@@ -208,6 +233,17 @@ def document_process(bot, telegram_token, message):
             logging.info("Dados salvos no banco de dados com sucesso.")
             bot.send_message(message.chat.id, text=response)
         else:
+            conn.commit()
+
+            # Verificar se a pasta 'review' existe e criá-la se necessário
+            if not os.path.exists('review'):
+                os.makedirs('review')
+
+            # Mover o arquivo para a pasta de revisão
+            review_path = f"review/{message.chat.id}_{message.message_id}.jpg"
+            shutil.move(path, review_path)
+            bot.send_message(message.chat.id, text=response)
+
             logging.error(f"Erro ao salvar os dados: {response}")
 
             # Verificar se a pasta 'review' existe e criá-la se necessário
@@ -255,7 +291,14 @@ def send_file(response, file_name, bot, message):
 
 def get_params_colporteur(bot, message):
     # Crie um cursor para executar as consultas
-    conn = d_i.mysql_connector(bot, message)
+    conn = d_i.mysql_connector()
+
+    # Verifica se ocorreu um erro na conexão
+    if isinstance(conn, mysql.connector.Error):
+        # Trate o erro conforme necessário
+        bot.send_message(message.chat.id, f"Ocorreu um erro ao obter os parâmetros do colportor: {conn}")
+        return
+
     cursor = conn.cursor()
     # Faz a consulta no banco de dados para obter as informações do usuário
     try:
