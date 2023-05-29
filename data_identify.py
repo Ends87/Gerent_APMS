@@ -35,17 +35,17 @@ def read_pdf(path):
     return text
 
 
-def diferenciar_comprovante(texto, message, bot):
-    texto = unidecode(texto.lower())
-    if "pix" in texto or "99Pay" in texto:
+def diferenciar_comprovante(text, message, bot):
+    text = unidecode(text.lower())
+    if "pix" in text or "99Pay" in text:
         logging.info("Comprovante de Transferência Pix")
         bot.reply_to(message, "Comprovante de Transferência Pix")
         return "Transferência Pix"
-    elif "parcelado" in texto:
+    elif "parcelado" in text:
         logging.info("Comprovante de Cartão de Crédito")
         bot.reply_to(message, "Comprovante de Cartão de Crédito")
         return "Cartão de Crédito"
-    elif "debito a vista" in texto:
+    elif "debito a vista" in text:
         logging.info("Comprovante de Cartão de Débito")
         bot.reply_to(message, "Comprovante de Cartão de Débito")
         return "Cartão de Débito"
@@ -55,7 +55,7 @@ def diferenciar_comprovante(texto, message, bot):
         return "Não foi possível diferenciar o comprovante"
 
 
-def buscar_aut(texto):
+def search_aut(texto):
     regex_aut = re.compile(r"AUT\s*=\s*(\d{6})\b|aut\s*:\s*(\d{6})\b|Autoriza[gçc][aã]o\s*:\s*(\d{6})\b", re.IGNORECASE)
     aut = re.findall(regex_aut, texto)
     aut = [num for tup in aut for num in tup if num.isdigit()]
@@ -76,12 +76,12 @@ def identificar_parcelas(texto):
         return 1
 
 
-def busca_valor(texto):
+def busca_valor(text):
     # Expressão regular para buscar por valores monetários
     regex_valor = re.compile(r"(?:R[Ss]?[$]?)\s*(\d{1,3}(?:[\.,]\d{3})*(?:,\d{2})?)")
 
     # Busca por valores monetários no texto
-    valor_enviado_str = regex_valor.findall(texto)
+    valor_enviado_str = regex_valor.findall(text)
 
     # Converte a string do valor_enviado para float
     try:
@@ -99,12 +99,12 @@ def busca_valor(texto):
     return valor_enviado
 
 
-def busca_cpnj(texto):
+def search_cpnj(text):
     # Expressão regular para buscar o CNPJ
     regex_cnpj = re.compile(r"0?4[.,/]?930[.,/]?244[|/]?0136[.,/-]?17")
 
     # Busca pelo CNPJ no texto
-    cnpj_encontrado = regex_cnpj.search(texto)
+    cnpj_encontrado = regex_cnpj.search(text)
 
     if cnpj_encontrado:
         cnpj_encontrado = True
@@ -113,12 +113,12 @@ def busca_cpnj(texto):
     return cnpj_encontrado
 
 
-def busca_id(texto):
+def search_id(text):
     # Expressão regular para buscar pelo ID da transação
     regex_id = re.compile(r"^[E£]\w{32}$", re.IGNORECASE)
 
     # Busca pelo ID da transação no texto
-    id_transacao = regex_id.search(texto)
+    id_transacao = regex_id.search(text)
 
     # Verifica se o ID da transação foi encontrado
     if id_transacao:
@@ -128,7 +128,7 @@ def busca_id(texto):
     return id_transacao
 
 
-def buscar_datas(texto):
+def search_datas(text):
     # Expressões regulares para diferentes formatos de data
     regex_data1 = r"\d{1,2}/\d{1,2}/\d{2,4}"  # formato dd/mm/aa ou dd/mm/aaaa
     regex_data2 = r"\d{1,2}\sde\s[a-z]+\sde\s\d{2,4}"  # formato dd de mês de aaaa
@@ -137,29 +137,29 @@ def buscar_datas(texto):
                              flags=re.IGNORECASE)  # formato dd MÊS aaaa
 
     # Lista para armazenar as datas encontradas
-    datas_encontradas = []
+    found_dates = []
 
     # Procura pelas datas no texto
     for regex in [regex_data1, regex_data2, regex_data3, regex_data4]:
-        datas_encontradas.extend(re.findall(regex, texto.lower()))
+        found_dates.extend(re.findall(regex, text.lower()))
 
     # Verifica se as datas encontradas são válidas
-    for data in datas_encontradas:
+    for date in found_dates:
         try:
-            if len(data) == 8:
+            if len(date) == 8:
                 formato = '%d/%m/%y'  # Formato para ano com dois dígitos
             else:
                 formato = '%d/%m/%Y'  # Formato para ano com quatro dígitos
-            dt = datetime.strptime(data, formato)
-            data_formatada = dt.strftime('%Y-%m-%d')  # Formato americano: YYYY-MM-DD
-            return data_formatada
+            dt = datetime.strptime(date, formato)
+            formated_dates = dt.strftime('%Y-%m-%d')  # Formato americano: YYYY-MM-DD
+            return formated_dates
         except ValueError:
             pass
 
     return None
 
 
-def verificar_usuario(bot, message):
+def check_user(bot, message):
     # Verifica se o usuário está cadastrado no banco de dados
     conn = mysql_connector()
 

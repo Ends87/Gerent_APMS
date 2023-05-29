@@ -15,12 +15,12 @@ def download_image(bot, telegram_token, message):
 
     try:
         # Obter informações sobre o arquivo de imagem
-        logging.info("Obtendo informações sobre o arquivo de imagem...")
+        logging.info("Obtendo informações sobre o arquivo de image...")
         file_info = bot.get_file(photo_message)
         file_path = file_info.file_path
 
-        # Fazer o download da imagem em sua resolução original
-        logging.info("Fazendo download da imagem em sua resolução original...")
+        # Fazer o download da image em sua resolução original
+        logging.info("Fazendo download da image em sua resolução original...")
         response = requests.get(f"https://api.telegram.org/file/bot{telegram_token}/{file_path}")
         response.raise_for_status()
 
@@ -107,10 +107,10 @@ def save_data_to_database(cursor, telegram_id, message_id, texto, comprovante):
         # Salva as informações da transação na tabela apropriada
         if comprovante == "Cartão de Débito" or comprovante == "Cartão de Crédito":
             valor_transacao = d_i.busca_valor(texto)
-            autorizacao = d_i.buscar_aut(texto)
+            autorizacao = d_i.search_aut(texto)
             parcelas = d_i.identificar_parcelas(texto)
-            data_transacao = d_i.buscar_datas(texto)
-            cnpj_sels = d_i.busca_cpnj(texto)
+            data_transacao = d_i.search_datas(texto)
+            cnpj_sels = d_i.search_cpnj(texto)
 
             # Verifica se todos os valores de transação estão presentes no texto
             if valor_transacao is None or autorizacao is None or parcelas is None or data_transacao is None or cnpj_sels is None:
@@ -130,9 +130,9 @@ def save_data_to_database(cursor, telegram_id, message_id, texto, comprovante):
 
         elif comprovante == "Transferência Pix":
             valor_transacao = d_i.busca_valor(texto)
-            id_transacao = d_i.busca_id(texto)
-            data_transacao = d_i.buscar_datas(texto)
-            cnpj_sels = d_i.busca_cpnj(texto)
+            id_transacao = d_i.search_id(texto)
+            data_transacao = d_i.search_datas(texto)
+            cnpj_sels = d_i.search_cpnj(texto)
 
             # Verifica se todos os valores de transação estão presentes no texto
             if valor_transacao is None or id_transacao is None or data_transacao is None or cnpj_sels is None:
@@ -290,7 +290,7 @@ def send_file(response, file_name, bot, message):
         bot.send_document(message.chat.id, open(file_name, 'rb'))
 
 
-def get_params_colporteur(bot, message, additional_params=None):
+def get_params_colporteur(bot, message):
     # Crie um cursor para executar as consultas
     conn = d_i.mysql_connector()
 
@@ -327,11 +327,6 @@ def get_params_colporteur(bot, message, additional_params=None):
                 "access_token": "b725bce53184fc6d8f360f05c1e3b4b1",
                 "DenominationalEntityId": "c10dd043-e46d-e511-bbf3-002590396224"
             }
-
-            # Adicione os parâmetros adicionais ao dicionário
-            if additional_params:
-                params.update(additional_params)
-
             return params
         else:
             # Caso contrário, envie uma mensagem informando que o usuário não é um colportor
@@ -347,15 +342,59 @@ def get_params_colporteur(bot, message, additional_params=None):
         conn.close()
 
 
-def get_additional_params(*args, **kwargs):
-    # Crie um dicionário vazio para armazenar os parâmetros adicionais
-    additional_params = {}
+def get_all_params_colporteur(bot, message):
+    # Busca os dados dos colportores no banco de dados
+    colporteur_ids = get_all_colporteur_ids()
 
-    # Adicione os parâmetros ao dicionário
-    for key, value in kwargs.items():
-        additional_params[key] = value
+    params_list = []
 
-    return additional_params
+    # Crie um cursor para executar as consultas
+    conn = d_i.mysql_connector()
+
+    # Verifica se ocorreu um erro na conexão
+    if isinstance(conn, mysql.connector.Error):
+        # Trate o erro conforme necessário
+        bot.send_message(message.chat.id, f"Ocorreu um erro ao obter os parâmetros dos colportores: {conn}")
+        return params_list
+
+    cursor = conn.cursor()
+
+    # Faz a consulta no banco de dados para obter as informações dos colportores
+    try:
+        for colporteur_id in colporteur_ids:
+            query = f"SELECT team_campaign_id FROM Colporteur WHERE colporteur_id = '{colporteur_id}'"
+            cursor.execute(query)
+            result = cursor.fetchone()
+
+            if result is None:
+                bot.send_message(message.chat.id, f"Ocorreu um erro ao obter os parâmetros dos colportores: {conn}")
+                continue
+
+            team_campaign_id = result[0]
+
+            params = {
+                "isExcel": "false",
+                "isCsv": "false",
+                "isAnalytical": "true",
+                "teamCampaignColporteurId": colporteur_id,
+                "teamCampaignId": team_campaign_id,
+                "minimizedDataReport": "false",
+                "campaignType": "10",
+                "access_token": "b725bce53184fc6d8f360f05c1e3b4b1",
+                "DenominationalEntityId": "c10dd043-e46d-e511-bbf3-002590396224"
+            }
+
+            params_list.append(params)
+
+    except mysql.connector.Error as error:
+        # Se ocorrer algum erro ao conectar ao banco de dados, envie uma mensagem de erro
+        bot.send_message(message.chat.id, f"Ocorreu um erro ao obter as informações dos colportores: {error}")
+    finally:
+        # Sempre feche o cursor e a conexão após a consulta
+        cursor.close()
+        conn.close()
+
+    return params_list
 
 
 def get_all_colporteur_ids():

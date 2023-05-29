@@ -129,32 +129,24 @@ def get_colporteur_closure_report(bot, message):
     functions.send_file(response, file_name, bot, message)
 
 
-def get_all_colporteur_closure_report(bot, message, additional_params=None):
-    # Busca os dados dos colportores no banco de dados
-    colporteur_ids = functions.get_all_colporteur_ids()
+def get_all_colporteur_closure_report(bot, message):
+    # Obtenha todos os parâmetros dos colportores
+    params_list = functions.get_all_params_colporteur(bot, message)
 
     url = 'https://apms.sdasystems.org//Reporting/Report/ColporteurClosureReport'
     headers = get_headers()
 
-    # Itera sobre os IDs dos colportores
-    for colporteur_id in colporteur_ids:
-        # Define os parâmetros para o colportor atual
-        params = functions.get_params_colporteur(bot, message, additional_params)
-
-        if params is None:
-            return
-
-        params['colporteurId'] = colporteur_id
-
+    # Itera sobre os parâmetros dos colportores
+    for params in params_list:
         # Faz a solicitação para o relatório do colportor
         response = requests.get(url, params=params, headers=headers)
 
         # Cria a pasta 'razao' se ela não existir
-        if not os.path.exists('all_clousers'):
-            os.makedirs('all_clousers')
+        if not os.path.exists('razao'):
+            os.makedirs('razao')
 
         # Salva e envia o arquivo para o colportor atual
-        file_name = f'all_clousers/{colporteur_id}.pdf'
+        file_name = f'razao/{params["teamCampaignColporteurId"]}.pdf'
         functions.send_file(response, file_name, bot, message)
 
 
