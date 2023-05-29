@@ -2,6 +2,7 @@ from PIL import Image
 import requests
 import logging
 import pytesseract
+import data_identify
 import data_identify as d_i
 import mysql.connector
 import os
@@ -265,7 +266,7 @@ def document_process(bot, telegram_token, message):
 
 def enviar_atualizacao(bot):
     novo_comando = '/saldo'
-    id_usuario = 1034309995
+    id_usuario = ""
 
     bot.send_message(id_usuario, "🥳")
 
@@ -289,7 +290,7 @@ def send_file(response, file_name, bot, message):
         bot.send_document(message.chat.id, open(file_name, 'rb'))
 
 
-def get_params_colporteur(bot, message):
+def get_params_colporteur(bot, message, additional_params=None):
     # Crie um cursor para executar as consultas
     conn = d_i.mysql_connector()
 
@@ -323,9 +324,14 @@ def get_params_colporteur(bot, message):
                 "teamCampaignId": team_campaign_id,
                 "minimizedDataReport": "false",
                 "campaignType": "10",
-                "access_token": "7c6319f9b602334195237d0f71352119",
+                "access_token": "b725bce53184fc6d8f360f05c1e3b4b1",
                 "DenominationalEntityId": "c10dd043-e46d-e511-bbf3-002590396224"
             }
+
+            # Adicione os parâmetros adicionais ao dicionário
+            if additional_params:
+                params.update(additional_params)
+
             return params
         else:
             # Caso contrário, envie uma mensagem informando que o usuário não é um colportor
@@ -339,3 +345,30 @@ def get_params_colporteur(bot, message):
         # Sempre feche o cursor e a conexão após a consulta
         cursor.close()
         conn.close()
+
+
+def get_additional_params(*args, **kwargs):
+    # Crie um dicionário vazio para armazenar os parâmetros adicionais
+    additional_params = {}
+
+    # Adicione os parâmetros ao dicionário
+    for key, value in kwargs.items():
+        additional_params[key] = value
+
+    return additional_params
+
+
+def get_all_colporteur_ids():
+    conn = data_identify.mysql_connector()
+    cursor = conn.cursor()
+
+    # Executa a consulta para obter os IDs dos colportores
+    cursor.execute('SELECT colporteur_id FROM colporteur')
+    result = cursor.fetchall()
+
+    # Extrai os IDs dos resultados da consulta
+    colporteur_ids = [row[0] for row in result]
+
+    conn.close()
+
+    return colporteur_ids
