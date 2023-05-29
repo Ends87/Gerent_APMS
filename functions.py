@@ -344,7 +344,7 @@ def get_params_colporteur(bot, message):
 
 def get_all_params_colporteur(bot, message):
     # Busca os dados dos colportores no banco de dados
-    colporteur_ids = get_all_colporteur_ids()
+    colporteur_ids, colporteur_names = get_all_colporteur_ids()
 
     params_list = []
 
@@ -365,10 +365,6 @@ def get_all_params_colporteur(bot, message):
             query = f"SELECT team_campaign_id FROM Colporteur WHERE colporteur_id = '{colporteur_id}'"
             cursor.execute(query)
             result = cursor.fetchone()
-
-            if result is None:
-                bot.send_message(message.chat.id, f"Ocorreu um erro ao obter os parâmetros dos colportores: {conn}")
-                continue
 
             team_campaign_id = result[0]
 
@@ -394,20 +390,21 @@ def get_all_params_colporteur(bot, message):
         cursor.close()
         conn.close()
 
-    return params_list
+    return params_list, colporteur_names
 
 
 def get_all_colporteur_ids():
     conn = data_identify.mysql_connector()
     cursor = conn.cursor()
 
-    # Executa a consulta para obter os IDs dos colportores
-    cursor.execute('SELECT colporteur_id FROM colporteur')
+    # Executa a consulta para obter os IDs e nomes dos colportores
+    cursor.execute('SELECT colporteur_id, colporteur_name FROM colporteur')
     result = cursor.fetchall()
 
-    # Extrai os IDs dos resultados da consulta
+    # Extrai os IDs e nomes dos resultados da consulta
     colporteur_ids = [row[0] for row in result]
+    colporteur_names = [row[1] for row in result]
 
     conn.close()
 
-    return colporteur_ids
+    return colporteur_ids, colporteur_names
