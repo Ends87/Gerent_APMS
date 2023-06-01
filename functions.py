@@ -290,6 +290,18 @@ def send_file(response, file_name, bot, message):
         bot.send_document(message.chat.id, open(file_name, 'rb'))
 
 
+def get_common_params():
+    return {
+        "isExcel": "false",
+        "isCsv": "false",
+        "isAnalytical": "true",
+        "minimizedDataReport": "false",
+        "campaignType": "10",
+        "access_token": "aa90aa5b2706cd1ade024e2dd7daa98a",
+        "DenominationalEntityId": "c10dd043-e46d-e511-bbf3-002590396224"
+    }
+
+
 def get_params_colporteur(bot, message):
     # Crie um cursor para executar as consultas
     conn = d_i.mysql_connector()
@@ -301,6 +313,7 @@ def get_params_colporteur(bot, message):
         return
 
     cursor = conn.cursor()
+
     # Faz a consulta no banco de dados para obter as informações do usuário
     try:
         # Execute a consulta SQL para obter as informações do usuário
@@ -316,17 +329,10 @@ def get_params_colporteur(bot, message):
 
             team_campaign_id = cursor.fetchone()[0]
 
-            params = {
-                "isExcel": "false",
-                "isCsv": "false",
-                "isAnalytical": "true",
-                "teamCampaignColporteurId": result[1],
-                "teamCampaignId": team_campaign_id,
-                "minimizedDataReport": "false",
-                "campaignType": "10",
-                "access_token": "b725bce53184fc6d8f360f05c1e3b4b1",
-                "DenominationalEntityId": "c10dd043-e46d-e511-bbf3-002590396224"
-            }
+            params = get_common_params()
+            params["teamCampaignColporteurId"] = result[1]
+            params["teamCampaignId"] = team_campaign_id
+
             return params
         else:
             # Caso contrário, envie uma mensagem informando que o usuário não é um colportor
@@ -368,17 +374,9 @@ def get_all_params_colporteur(bot, message):
 
             team_campaign_id = result[0]
 
-            params = {
-                "isExcel": "false",
-                "isCsv": "false",
-                "isAnalytical": "true",
-                "teamCampaignColporteurId": colporteur_id,
-                "teamCampaignId": team_campaign_id,
-                "minimizedDataReport": "false",
-                "campaignType": "10",
-                "access_token": "b725bce53184fc6d8f360f05c1e3b4b1",
-                "DenominationalEntityId": "c10dd043-e46d-e511-bbf3-002590396224"
-            }
+            params = get_common_params()
+            params["teamCampaignColporteurId"] = colporteur_id
+            params["teamCampaignId"] = team_campaign_id
 
             params_list.append(params)
 

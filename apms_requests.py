@@ -166,5 +166,5 @@ def get_balance_colporteurs_report(bot, message):
         os.makedirs('relatorios')
 
     # Chama a nova função para salvar e enviar o arquivo
-    file_name = f'relatorios/{message.from_user.id}.pdf'
+    file_name = 'relatorios/Saldo Colportores.pdf'
     functions.send_file(response, file_name, bot, message)
