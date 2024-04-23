@@ -86,9 +86,9 @@ CREATE TABLE IF NOT EXISTS Respostas (
     FOREIGN KEY (user_id) REFERENCES Usuario (telegram_id)
 );
 
-INSERT INTO team_campaign (team_campaign_id, campaign_name) VALUES ('0', 'Sonhando Alto 2023 2');
+INSERT INTO team_campaign (team_campaign_id, campaign_name) VALUES ('1', 'Dev');
 
-INSERT INTO Colporteur (colporteur_id, colporteur_name, team_campaign_id) VALUES ('', 'Anderson da Silva Miranda', '0990e8bf-6cf5-462d-a1ee-52bf2d2b1c79');
+INSERT INTO Colporteur (colporteur_id, colporteur_name, team_campaign_id) VALUES ('1', 'Ends', '1');
 
 INSERT INTO Usuario (telegram_id, name, isColporteur, colporteur_id)
-VALUES (803998885, 'Anderson da Silva Miranda', true, 'bc587f33-3ae8-4e29-99c8-e4363cb29310');
+VALUES (803998885, 'Ends', false, '1');
