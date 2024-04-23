@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS Usuario (
   CHECK (isColporteur = TRUE AND colporteur_id IS NOT NULL OR isColporteur = FALSE)
 );
 
-CREATE TABLE comprovantes (
+CREATE TABLE IF NOT EXISTS comprovantes (
     comprovante_id INT AUTO_INCREMENT PRIMARY KEY,
     chave VARCHAR(255) NOT NULL,
     telegram_id BIGINT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE comprovantes (
     FOREIGN KEY (telegram_id) REFERENCES usuario(telegram_id)
 );
 
-CREATE TABLE comprovantes_pix (
+CREATE TABLE IF NOT EXISTS comprovantes_pix (
     comprovante_id INT PRIMARY KEY,
     valor_enviado DECIMAL(10, 2) NOT NULL,
     data_transacao DATE NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE comprovantes_pix (
     FOREIGN KEY (comprovante_id) REFERENCES comprovantes(comprovante_id)
 );
 
-CREATE TABLE comprovantes_cartao (
+CREATE TABLE IF NOT EXISTS comprovantes_cartao (
     comprovante_id INT PRIMARY KEY,
     valor_enviado DECIMAL(10, 2) NOT NULL,
     data_transacao DATE NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE comprovantes_cartao (
     FOREIGN KEY (comprovante_id) REFERENCES comprovantes(comprovante_id)
 );
 
-CREATE TABLE comprovantes_incompletos_pix (
+CREATE TABLE IF NOT EXISTS comprovantes_incompletos_pix (
     comprovante_id INT PRIMARY KEY,
     valor_enviado DECIMAL(10, 2),
     data_transacao DATE,
@@ -64,7 +64,7 @@ CREATE TABLE comprovantes_incompletos_pix (
     FOREIGN KEY (comprovante_id) REFERENCES comprovantes(comprovante_id)
 );
 
-CREATE TABLE comprovantes_incompletos_cartao (
+CREATE TABLE IF NOT EXISTS comprovantes_incompletos_cartao (
     comprovante_id INT PRIMARY KEY,
     valor_enviado DECIMAL(10, 2),
     data_transacao DATE,
@@ -74,7 +74,7 @@ CREATE TABLE comprovantes_incompletos_cartao (
     FOREIGN KEY (comprovante_id) REFERENCES comprovantes(comprovante_id)
 );
 
-CREATE TABLE Respostas (
+CREATE TABLE IF NOT EXISTS Respostas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT,
     tempo_oracao INT,
