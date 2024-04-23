@@ -1,0 +1,5 @@
+telebot
+pytesseract
+unidecode
+PyPDF2
+mysql.connector
