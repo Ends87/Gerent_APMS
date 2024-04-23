@@ -157,8 +157,8 @@ def save_data_to_database(cursor, telegram_id, message_id, texto, comprovante):
 
 
 def photo_process(bot, telegram_token, message):
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-    os.environ['TESSDATA_PREFIX'] = r'C:\Program Files\Tesseract-OCR\tessdata'
+    # Configurações do Tesseract
+    pytesseract.pytesseract.tesseract_cmd = r'D:\\tesseract-ORC\\tesseract.exe'
     custom_config = r'--oem 3 --psm 6 -l por'
 
     try:
@@ -166,7 +166,6 @@ def photo_process(bot, telegram_token, message):
 
         # Verifica se ocorreu um erro na conexão
         if isinstance(conn, mysql.connector.Error):
-            # Trate o erro conforme necessário
             bot.send_message(message.chat.id, f"Ocorreu um erro ao processar a foto: {conn}")
             return
 
@@ -174,7 +173,7 @@ def photo_process(bot, telegram_token, message):
 
         img, path = download_image(bot, telegram_token, message)
 
-        # Extrair o texto da imagem com o pytesseract
+        # Extraí o texto da imagem
         logging.info("Extraindo texto da imagem com o pytesseract...")
         texto = pytesseract.image_to_string(img, config=custom_config)
         logging.debug(f"Texto extraído da imagem: {texto}")
